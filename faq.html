@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=General+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=General+Sans:wght@400&display=swap');
+
+body {
+    font-family: 'General Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.unique-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    z-index: 1000;
+    font-size: 14px;
+}
+
+.unique-navbar.transparent {
+    background-color: transparent;
+    color: white;
+}
+
+.unique-navbar.solid {
+    background-color: white;
+    color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.unique-navbar.fixed-transparent {
+    background-color: transparent !important;
+}
+
+.unique-navbar a {
+    color: inherit;
+    text-decoration: none;
+    margin: 0 15px;
+    margin-left: -10%;
+    margin-right: 10%;
+    transition: color 0.3s;
+}
+
+.unique-navbar.solid a {
+    color: black;
+}
+
+.unique-navbar-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 60px;
+}
+
+.unique-navbar-logo {
+    margin-right: 20px;
+    width: 4%;
+    
+}
+
+.content {
+    margin-top: 100px;
+    padding: 20px;
+    height: 2000px;
+    background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+}
+
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 10%;
+    z-index: 1100;
+}
+
+.burger-menu div {
+    width: 25px;
+    height: 2px;
+    background-color: rgb(255, 255, 255);
+    margin: 4px;
+    transition: 0.4s;
+}
+
+.burger-menu:hover div {
+    background-color: rgb(255, 255, 255);
+}
+
+.burger-menu.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-menu.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.close-menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.close-menu-icon div {
+    width: 25px;
+    height: 2px;
+    background-color: black;
+    margin: 4px;
+    transition: 0.4s;
+}
+
+.close-menu-icon:hover div {
+    background-color: gray;
+}
+.unique-navbar-content a:hover {
+        color: gray !important;
+    }
+    @media (min-width: 768px) and (max-width: 1000px) {
+.unique-navbar-logo {
+margin-left: 10%;
+margin-right: -10%;
+}
+.unique-navbar-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+    margin-left: -10%;
+
+}
+    }
+    @media (min-width: 1200px) {
+        .unique-navbar-logo{
+            margin-left: 7%;
+            
+    }
+}
+@media (max-width: 1050px) {
+    .burger-menu {
+        display: flex;
+    }
+
+    .unique-navbar-logo.hidden,
+    .burger-menu.hidden {
+        display: none;
+    }
+
+    .close-menu-icon {
+        display: none;
+    }
+
+    .unique-navbar-content {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .unique-navbar-content.active {
+        display: flex;
+        justify-content: flex-start;
+        padding-top: 100px;
+    }
+
+    .unique-navbar-content a {
+        margin: -20px;
+        color: white !important;
+        font-size: 24px;
+        text-transform: uppercase;
+        transition: color 0.3s;
+    }
+
+    .unique-navbar-content a:hover {
+        color: gray !important;
+    }
+
+    .burger-menu div {
+        background-color: black;
+    }
+
+    .unique-navbar.solid .burger-menu div {
+        background-color: black;
+    }
+
+    .unique-navbar.transparent .burger-menu div {
+        background-color: white;
+    }
+    .unique-navbar-logo{
+        width: 8%;
+    }
+}
+.unique-navbar-logo {
+width: auto; /* Adjust if necessary */
+height: 50px; /* Set a height that suits your design */
+margin-right: 20px;
+margin-left: 2%;
+}
+
+
+        .content {
+            margin-top: 100px;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .faq-header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .faq-header p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .faq-section {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .faq-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .faq-list {
+            list-style: none;
+            padding: 0;
+            display: inline-block;
+            text-align: left;
+            width: 80%;
+        }
+
+        .faq-list .faq-item {
+            margin-bottom: 20px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        .faq-list .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-list .faq-item h4 {
+            margin: 0;
+            font-size: 18px;
+            color: #000000;
+        }
+
+        .faq-list .faq-item p {
+            margin: 10px 0 0;
+            display: none;
+            color: #555;
+        }
+
+        .faq-list .faq-item.active p {
+            display: block;
+        }
+
+        .faq-list .faq-item .faq-buttons {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .faq-list .faq-item .faq-buttons button {
+            padding: 5px 10px;
+            border: none;
+            background: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .faq-list .faq-item .faq-buttons button:hover {
+            background: #0056b3;
+        }
+
+        .faq-list .faq-item .faq-buttons .delete-button {
+            background: #FF4C4C;
+        }
+
+        .faq-list .faq-item .faq-buttons .delete-button:hover {
+            background: #CC0000;
+        }
+
+        .admin-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .admin-buttons button {
+            padding: 10px 20px;
+            border: none;
+            background: #000000;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .admin-buttons button:hover {
+            background: #e1e0e0;
+            color: #000000;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content input,
+        .modal-content textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .modal-content button {
+            width: 100%;
+            background-color: #000000;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background-color: #e1e0e0;
+            color: black;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 50px;
+        }
+
+        .footer-links,
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a,
+        .social-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .footer-links a:hover,
+        .social-links a:hover {
+            color: gray;
+        }
+
+        .bFoot {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="unique-navbar transparent" id="unique-navbar">
+        <a href="index.html"><img src="images/28a8288e-5e38-4119-805b-f6eb28d25c1b.webp" alt="CMC MODE" class="unique-navbar-logo" id="navbar-logo"></a>
+        <div class="burger-menu" id="burger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="close-menu-icon" id="close-menu-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="unique-navbar-content" id="unique-navbar-content">
+            <a href="index.html" class="nav-link">ACCUEIL</a>
+            <a href="shop.html" class="nav-link">PRODUITS</a>
+            <a href="about.html" class="nav-link">À PROPOS</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="blog.html" class="nav-link">BLOG</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="faq-header">
+                <h1>Questions Fréquentes</h1>
+                <p>Trouvez les réponses aux questions les plus courantes ci-dessous.</p>
+            </div>
+
+            <div class="admin-buttons">
+                <button onclick="openModal()">Ajouter une question</button>
+            </div>
+
+            <div class="faq-section">
+                <ul class="faq-list" id="general-section">
+                    <li class="faq-item" data-id="1">
+                        <h4>Quels sont vos horaires d'ouverture ?</h4>
+                        <p>Notre boutique est ouverte du lundi au samedi de 10h à 19h. Nous sommes fermés le dimanche et les jours fériés.</p>
+                        <div class="faq-buttons">
+                            <button onclick="editFAQ(this)">Modifier</button>
+                            <button class="delete-button" onclick="deleteFAQ(this)">Supprimer</button>
+                        </div>
+                    </li>
+                    <li class="faq-item" data-id="2">
+                        <h4>Où est située votre boutique ?</h4>
+                        <p>Nous sommes situés au 51 Rue de la Mer, 62100 Calais. Vous pouvez trouver une carte interactive sur notre page "À Propos" pour plus de détails.</p>
+                        <div class="faq-buttons">
+                            <button onclick="editFAQ(this)">Modifier</button>
+                            <button class="delete-button" onclick="deleteFAQ(this)">Supprimer</button>
+                        </div>
+                    </li>
+                    <li class="faq-item" data-id="3">
+                        <h4>Proposez-vous des cartes cadeaux ?</h4>
+                        <p>Oui, nous proposons des cartes cadeaux disponibles en boutique. Elles sont disponibles en différentes valeurs et peuvent être utilisées sur tous nos articles.</p>
+                        <div class="faq-buttons">
+                            <button onclick="editFAQ(this)">Modifier</button>
+                            <button class="delete-button" onclick="deleteFAQ(this)">Supprimer</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="faq-section">
+                
+                <ul class="faq-list" id="products-section">
+                    <li class="faq-item" data-id="4">
+                        <h4>Proposez-vous des vêtements pour toutes les saisons ?</h4>
+                        <p>Nous proposons uniquement des vêtements de saisons.</p>
+                        <div class="faq-buttons">
+                            <button onclick="editFAQ(this)">Modifier</button>
+                            <button class="delete-button" onclick="deleteFAQ(this)">Supprimer</button>
+                        </div>
+                    </li>
+                    <li class="faq-item" data-id="5">
+                        <h4>Quels types de tissus utilisez-vous pour vos vêtements ?</h4>
+                        <p>Nous sélectionnons avec soin nos tissus pour garantir qualité et confort. Nos collections comprennent des tissus en coton biologique, en lin, en laine mérinos, et en soie. Chaque produit est accompagné d'une description détaillée de ses matériaux.</p>
+                        <div class="faq-buttons">
+                            <button onclick="editFAQ(this)">Modifier</button>
+                            <button class="delete-button" onclick="deleteFAQ(this)">Supprimer</button>
+                        </div>
+                    </li>
+                    <li class="faq-item" data-id="6">
+                        <h4>Renouvelez-vous fréquemment vos collections ?</h4>
+                        <p>Oui, nous renouvelons régulièrement nos collections pour suivre les dernières tendances de la mode. Nous recevons de nouveaux articles chaque saison, ce qui vous permet de trouver des pièces fraîches et à la mode tout au long de l'année.</p>
+                        <div class="faq-buttons">
+                            <button onclick="editFAQ(this)">Modifier</button>
+                            <button class="delete-button" onclick="deleteFAQ(this)">Supprimer</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="faqModal" class="modal">
+                <div id="faqModalContent" class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2 id="modalTitle">Ajouter une question</h2>
+                    <input type="hidden" id="faqId">
+                    <label for="question">Question</label>
+                    <input type="text" id="question" placeholder="Entrez la question">
+                    <label for="answer">Réponse</label>
+                    <textarea id="answer" placeholder="Entrez la réponse"></textarea>
+                    <button onclick="saveFAQ()">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <a href="index.html"><img src="images/28a8288e-5e38-4119-805b-f6eb28d25c1b.webp" alt="CMC MODE" class="footer-logo"></a>
+            <div class="footer-links">
+                <a href="#">Politique de données</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><img src="images/facebook-icon.svg" alt="Facebook"></a>
+            </div>
+        </div>
+        <p class="bFoot">&copy; 2024 CMC MODE. Tous droits réservés.</p>
+    </footer>
+
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script>
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('unique-navbar');
+            const navbarContent = document.getElementById('unique-navbar-content');
+            if (!navbarContent.classList.contains('active')) {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('transparent');
+                    navbar.classList.add('solid');
+                } else {
+                    navbar.classList.remove('solid');
+                    navbar.classList.add('transparent');
+                }
+            }
+        });
+
+        document.getElementById('burger-menu').addEventListener('click', function () {
+            const navbarContent = document.getElementById('unique-navbar-content');
+            const navbarLogo = document.getElementById('navbar-logo');
+            const burgerMenu = document.getElementById('burger-menu');
+            const closeMenuIcon = document.getElementById('close-menu-icon');
+            navbarContent.classList.toggle('active');
+            navbarLogo.classList.toggle('hidden');
+            burgerMenu.classList.toggle('hidden');
+            closeMenuIcon.style.display = navbarContent.classList.contains('active') ? 'flex' : 'none';
+
+            if (navbarContent.classList.contains('active')) {
+                navbar.classList.add('fixed-transparent');
+            } else {
+                navbar.classList.remove('fixed-transparent');
+            }
+        });
+
+        document.getElementById('close-menu-icon').addEventListener('click', function () {
+            const navbarContent = document.getElementById('unique-navbar-content');
+            const navbarLogo = document.getElementById('navbar-logo');
+            const burgerMenu = document.getElementById('burger-menu');
+            const closeMenuIcon = document.getElementById('close-menu-icon');
+            navbarContent.classList.remove('active');
+            navbarLogo.classList.remove('hidden');
+            burgerMenu.classList.remove('hidden');
+            closeMenuIcon.style.display = 'none';
+            navbar.classList.remove('fixed-transparent');
+        });
+
+        async function fetchFAQs() {
+            const response = await fetch('/api/faqs');
+            const faqs = await response.json();
+            const generalSection = document.getElementById('general-section');
+            const productsSection = document.getElementById('products-section');
+
+            generalSection.innerHTML = '';
+            productsSection.innerHTML = '';
+
+            faqs.forEach(faq => {
+                const faqItem = document.createElement('li');
+                faqItem.className = 'faq-item';
+                faqItem.dataset.id = faq._id;
+                faqItem.innerHTML = `
+                    <h4>${faq.question}</h4>
+                    <p>${faq.answer}</p>
+                    <div class="faq-buttons">
+                        <button onclick="editFAQ(this)">Modifier</button>
+                        <button class="delete-button" onclick="deleteFAQ(this)">Supprimer</button>
+                    </div>
+                `;
+
+                if (faq.category === 'Général') {
+                    generalSection.appendChild(faqItem);
+                } else if (faq.category === 'Produits') {
+                    productsSection.appendChild(faqItem);
+                }
+            });
+
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                    const answer = item.querySelector('p');
+                    if (item.classList.contains('active')) {
+                        answer.style.display = 'block';
+                    } else {
+                        answer.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        function openModal() {
+            const modal = document.getElementById('faqModal');
+            const modalTitle = document.getElementById('modalTitle');
+            document.getElementById('faqId').value = '';
+            document.getElementById('question').value = '';
+            document.getElementById('answer').value = '';
+            modalTitle.textContent = 'Ajouter une question';
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('faqModal');
+            modal.style.display = 'none';
+        }
+
+        function editFAQ(button) {
+            const faqItem = button.closest('.faq-item');
+            const question = faqItem.querySelector('h4').textContent;
+            const answer = faqItem.querySelector('p').textContent;
+            const faqId = faqItem.getAttribute('data-id');
+            const modal = document.getElementById('faqModal');
+            const modalTitle = document.getElementById('modalTitle');
+            document.getElementById('faqId').value = faqId;
+            document.getElementById('question').value = question;
+            document.getElementById('answer').value = answer;
+            modalTitle.textContent = 'Modifier la question';
+            modal.style.display = 'block';
+        }
+
+        async function saveFAQ() {
+            const faqId = document.getElementById('faqId').value;
+            const question = document.getElementById('question').value;
+            const answer = document.getElementById('answer').value;
+
+            const faq = { question, answer, category: 'Général' }; // Adjust category as needed
+
+            let method = 'POST';
+            let url = '/api/faqs';
+            if (faqId) {
+                method = 'PUT';
+                url = `/api/faqs/${faqId}`;
+            }
+
+            await fetch(url, {
+                method,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(faq)
+            });
+
+            closeModal();
+            fetchFAQs();
+        }
+
+        async function deleteFAQ(button) {
+            const faqItem = button.closest('.faq-item');
+            const faqId = faqItem.getAttribute('data-id');
+
+            await fetch(`/api/faqs/${faqId}`, {
+                method: 'DELETE'
+            });
+
+            fetchFAQs();
+        }
+
+        window.onload = fetchFAQs;
+    </script>
+</body>
+
+</html>

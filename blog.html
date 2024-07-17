@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Blog</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .navbar {
+            background-color: #333;
+        }
+
+        .nav-link {
+            color: #fff;
+        }
+
+        .nav-link:hover {
+            color: #ccc;
+        }
+
+        .section {
+            padding: 50px 20px;
+        }
+
+        .blog-header {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .blog-header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .blog-header p {
+            font-size: 1.2em;
+        }
+
+        .post {
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 10px;
+            margin: 20px auto; /* Centrer horizontalement */
+            padding: 20px;
+            max-width: 600px; /* Limite la largeur maximale du conteneur */
+            width: 100%; /* Assurez-vous qu'il occupe toute la largeur disponible jusqu'à la limite */
+        }
+
+        .post-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .comment-section {
+            margin-top: 30px;
+        }
+
+        .comment {
+            background-color: #333;
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .comment-author {
+            font-weight: bold;
+        }
+
+        .comment-text {
+            margin-top: 5px;
+        }
+
+        .comment-form {
+            margin-top: 20px;
+        }
+
+        .comment-form textarea,
+        .comment-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+        }
+
+        .comment-form button {
+            padding: 10px 20px;
+            background-color: #ff6600;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .comment-form button:hover {
+            background-color: #e65c00;
+        }
+
+        .facebook-section {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+        }
+
+        .facebook-section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .unique-navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+            z-index: 1000;
+        }
+
+        .unique-navbar.transparent {
+            background-color: transparent;
+            color: white;
+        }
+
+        .unique-navbar.solid {
+            background-color: white;
+            color: black;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .unique-navbar.fixed-transparent {
+            background-color: transparent !important;
+        }
+
+        .unique-navbar a {
+            color: inherit;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .unique-navbar.solid a {
+            color: black;
+        }
+
+        .content {
+            margin-top: 100px;
+            padding: 20px;
+            height: 2000px;
+            background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin-right: 10%;
+            z-index: 1100;
+        }
+
+        .burger-menu div {
+            width: 25px;
+            height: 2px;
+            background-color: rgb(255, 255, 255);
+            margin: 4px;
+            transition: 0.4s;
+        }
+
+        .burger-menu:hover div {
+            background-color: rgb(255, 255, 255);
+        }
+
+        .burger-menu.active div:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .burger-menu.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active div:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .close-menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .close-menu-icon div {
+            width: 25px;
+            height: 2px;
+            background-color: black;
+            margin: 4px;
+            transition: 0.4s;
+        }
+
+        .close-menu-icon:hover div {
+            background-color: gray;
+        }
+
+        .unique-navbar-content a:hover {
+            color: gray !important;
+        }
+
+        @media (min-width: 768px) and (max-width: 1000px) {
+            .unique-navbar-logo {
+                margin-left: 10%;
+                margin-right: -10%;
+            }
+
+            .unique-navbar-content {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                gap: 30px;
+                margin-left: -10%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .unique-navbar-logo {
+                margin-left: 7%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .burger-menu {
+                display: flex;
+            }
+
+            .unique-navbar-logo.hidden,
+            .burger-menu.hidden {
+                display: none;
+            }
+
+            .close-menu-icon {
+                display: none;
+            }
+
+            .unique-navbar-content {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: rgba(0, 0, 0, 0.8);
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                justify-content: center;
+                z-index: 1000;
+            }
+
+            .unique-navbar-content.active {
+                display: flex;
+                justify-content: flex-start;
+                padding-top: 100px;
+            }
+
+            .unique-navbar-content a {
+                margin: 20px;
+                color: white !important;
+                font-size: 24px;
+                text-transform: uppercase;
+                transition: color 0.3s;
+            }
+
+            .unique-navbar-content a:hover {
+                color: gray !important;
+            }
+
+            .burger-menu div {
+                background-color: black;
+            }
+
+            .unique-navbar.solid .burger-menu div {
+                background-color: black;
+            }
+
+            .unique-navbar.transparent .burger-menu div {
+                background-color: white;
+            }
+
+            .unique-navbar-logo {
+                width: 70%;
+            }
+        }
+
+        .unique-navbar-logo {
+            width: auto;
+            height: 50px;
+            margin-right: 20px;
+            margin-left: 2%;
+        }
+
+        .modal-content input[type="text"],
+        .modal-content textarea,
+        .modal-content input[type="file"] {
+            width: calc(100% - 20px); /* Full width minus padding */
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+        }
+
+        .modal-content button {
+            padding: 10px 20px;
+            background-color: #ff6600;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background-color: #e65c00;
+        }
+
+        .modal-content label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 500px; /* Max width for the modal */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        #articleModalContent,
+        #commentModalContent {
+            max-width: 500px; /* Reduce the max width */
+            width: 90%; /* Ensure it uses the full width up to max-width */
+        }
+
+        #articleModalContent label,
+        #commentModalContent label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        #articleModalContent input[type="text"],
+        #commentModalContent input[type="text"],
+        #articleModalContent textarea,
+        #commentModalContent textarea,
+        #articleModalContent input[type="file"] {
+            width: calc(100% - 20px); /* Full width minus padding */
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #eee;
+        }
+
+        #articleModalContent button,
+        #commentModalContent button {
+            padding: 10px 20px;
+            background-color: #ff6600;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        #articleModalContent button:hover,
+        #commentModalContent button:hover {
+            background-color: #e65c00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="unique-navbar transparent" id="unique-navbar">
+        <a href="index.html"><img src="./mg2/6681c1660d9613fbf3097b52_28a8288e-5e38-4119-805b-f6eb28d25c1b-p-130x130q80.webp" alt="Logo" class="unique-navbar-logo" id="navbar-logo"></a>
+
+        <div class="burger-menu" id="burger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="close-menu-icon" id="close-menu-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="unique-navbar-content" id="unique-navbar-content">
+            <a href="index.html" class="nav-link">ACCUEIL</a>
+            <a href="shop.html" class="nav-link">PRODUITS</a>
+            <a href="about.html" class="nav-link">À PROPOS</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="blog.html" class="nav-link">BLOG</a>
+        </div>
+    </div>
+
+    <div class="blog-header">
+        <h1>Blog</h1>
+        <p>Découvrez nos dernières actualités, tendances et inspirations</p>
+    </div>
+    <div class="section" id="articles-grid">
+        <!-- Articles will be dynamically loaded here -->
+    </div>
+
+    <div class="admin-buttons" style="justify-content: center;">
+        <button onclick="openArticleModal()">Ajouter un article</button>
+    </div>
+
+    <div id="articleModal" class="modal">
+        <div id="articleModalContent" class="modal-content">
+            <span class="close" onclick="closeArticleModal()">&times;</span>
+            <h2 id="articleModalTitle">Ajouter un article</h2>
+            <input type="hidden" id="articleId">
+            <label for="articleTitle">Titre</label>
+            <input type="text" id="articleTitle" placeholder="Titre de l'article">
+            <label for="articleDescription">Description</label>
+            <textarea id="articleDescription" placeholder="Description de l'article"></textarea>
+            <label for="articleImageFile">Sélectionner une image</label>
+            <input type="file" id="articleImageFile">
+            <span id="fileName">Aucun fichier n’a été sélectionné</span>
+            <button onclick="saveArticle()">Enregistrer</button>
+        </div>
+    </div>
+
+    <div id="commentModal" class="modal">
+        <div id="commentModalContent" class="modal-content">
+            <span class="close" onclick="closeCommentModal()">&times;</span>
+            <h2 id="commentModalTitle">Ajouter un commentaire</h2>
+            <input type="hidden" id="commentArticleId">
+            <label for="commentName">Nom</label>
+            <input type="text" id="commentName" placeholder="Votre nom">
+            <label for="commentText">Commentaire</label>
+            <textarea id="commentText" placeholder="Votre commentaire"></textarea>
+            <button onclick="saveComment()">Enregistrer</button>
+        </div>
+    </div>
+
+    <div class="facebook-section">
+        <h2>Publications Facebook</h2>
+        <div class="fb-page" 
+             data-href="https://www.facebook.com/MonEntreprise" 
+             data-tabs="timeline" 
+             data-width="500" 
+             data-height="600" 
+             data-small-header="false" 
+             data-adapt-container-width="true" 
+             data-hide-cover="false" 
+             data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/MonEntreprise" class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/MonEntreprise">MonEntreprise</a>
+            </blockquote>
+        </div>
+    </div>
+
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v12.0"></script>
+    <script>
+        let isEditMode = false;
+
+        async function fetchArticles() {
+            try {
+                const response = await fetch('/api/articles');
+                const articles = await response.json();
+                const articlesGrid = document.getElementById('articles-grid');
+                articlesGrid.innerHTML = '';
+                articles.forEach(article => {
+                    const articleCard = document.createElement('div');
+                    articleCard.className = 'post';
+                    articleCard.id = `article-${article._id}`;
+                    articleCard.innerHTML = `
+                        <h2 class="post-title">${article.title}</h2>
+                        <img src="${article.imageUrl}" alt="${article.title}" class="post-image">
+                        <div class="post-content">${article.description}</div>
+                        <div class="admin-buttons">
+                            <button onclick="deleteArticle('${article._id}')">Supprimer</button>
+                        </div>
+                        <div class="comment-section">
+                            <h3>Commentaires</h3>
+                            ${article.comments.map(comment => `
+                                <div class="comment">
+                                    <p><strong>${comment.name}</strong>: ${comment.text}</p>
+                                    <button onclick="deleteComment('${article._id}', '${comment._id}')">Supprimer</button>
+                                </div>
+                            `).join('')}
+                            <button onclick="openCommentModal('${article._id}')">Ajouter un commentaire</button>
+                        </div>
+                    `;
+                    articlesGrid.appendChild(articleCard);
+                });
+            } catch (error) {
+                console.error('Failed to fetch articles', error);
+            }
+        }
+
+        function openArticleModal(article = null) {
+            const modal = document.getElementById('articleModal');
+            const modalTitle = document.getElementById('articleModalTitle');
+            isEditMode = !!article;
+            modal.style.display = 'block';
+            if (isEditMode) {
+                document.getElementById('articleId').value = article._id;
+                document.getElementById('articleTitle').value = article.title;
+                document.getElementById('articleDescription').value = article.description;
+                document.getElementById('articleImageFile').value = '';
+                modalTitle.textContent = 'Modifier l\'article';
+            } else {
+                modalTitle.textContent = 'Ajouter un article';
+                document.getElementById('articleId').value = '';
+                document.getElementById('articleTitle').value = '';
+                document.getElementById('articleDescription').value = '';
+                document.getElementById('articleImageFile').value = '';
+            }
+        }
+
+        function closeArticleModal() {
+            const modal = document.getElementById('articleModal');
+            modal.style.display = 'none';
+        }
+
+        function openCommentModal(articleId) {
+            const modal = document.getElementById('commentModal');
+            document.getElementById('commentArticleId').value = articleId;
+            modal.style.display = 'block';
+        }
+
+        function closeCommentModal() {
+            const modal = document.getElementById('commentModal');
+            modal.style.display = 'none';
+        }
+
+        async function saveArticle() {
+            const articleId = document.getElementById('articleId').value;
+            const title = document.getElementById('articleTitle').value;
+            const description = document.getElementById('articleDescription').value;
+            const imageFile = document.getElementById('articleImageFile').files[0];
+
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', description);
+            if (imageFile) {
+                formData.append('image', imageFile);
+            }
+
+            try {
+                if (isEditMode) {
+                    await fetch(`/api/articles/${articleId}`, {
+                        method: 'PUT',
+                        body: formData
+                    });
+                } else {
+                    await fetch('/api/articles', {
+                        method: 'POST',
+                        body: formData
+                    });
+                }
+                closeArticleModal();
+                fetchArticles();
+            } catch (error) {
+                console.error('Failed to save article', error);
+            }
+        }
+
+        async function deleteArticle(id) {
+            try {
+                await fetch(`/api/articles/${id}`, {
+                    method: 'DELETE'
+                });
+                fetchArticles();
+            } catch (error) {
+                console.error('Failed to delete article', error);
+            }
+        }
+
+        async function saveComment() {
+            const articleId = document.getElementById('commentArticleId').value;
+            const name = document.getElementById('commentName').value;
+            const text = document.getElementById('commentText').value;
+
+            try {
+                await fetch(`/api/articles/${articleId}/comments`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, text })
+                });
+                closeCommentModal();
+                fetchArticles();
+            } catch (error) {
+                console.error('Failed to save comment', error);
+            }
+        }
+
+        async function deleteComment(articleId, commentId) {
+            try {
+                await fetch(`/api/articles/${articleId}/comments/${commentId}`, {
+                    method: 'DELETE'
+                });
+                fetchArticles();
+            } catch (error) {
+                console.error('Failed to delete comment', error);
+            }
+        }
+
+        window.onload = fetchArticles;
+
+        window.onclick = function(event) {
+            const articleModal = document.getElementById('articleModal');
+            const commentModal = document.getElementById('commentModal');
+            if (event.target == articleModal) {
+                articleModal.style.display = 'none';
+            }
+            if (event.target == commentModal) {
+                commentModal.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('unique-navbar');
+            const navbarContent = document.getElementById('unique-navbar-content');
+            if (!navbarContent.classList.contains('active')) {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('transparent');
+                    navbar.classList.add('solid');
+                } else {
+                    navbar.classList.remove('solid');
+                    navbar.classList.add('transparent');
+                }
+            }
+        });
+
+        document.getElementById('burger-menu').addEventListener('click', function() {
+            const navbarContent = document.getElementById('unique-navbar-content');
+            const navbarLogo = document.getElementById('navbar-logo');
+            const burgerMenu = document.getElementById('burger-menu');
+            const closeMenuIcon = document.getElementById('close-menu-icon');
+            navbarContent.classList.toggle('active');
+            navbarLogo.classList.toggle('hidden');
+            burgerMenu.classList.toggle('hidden');
+            closeMenuIcon.style.display = navbarContent.classList.contains('active') ? 'flex' : 'none';
+
+            if (navbarContent.classList.contains('active')) {
+                navbar.classList.add('fixed-transparent');
+            } else {
+                navbar.classList.remove('fixed-transparent');
+            }
+        });
+
+        document.getElementById('close-menu-icon').addEventListener('click', function() {
+            const navbarContent = document.getElementById('unique-navbar-content');
+            const navbarLogo = document.getElementById('navbar-logo');
+            const burgerMenu = document.getElementById('burger-menu');
+            const closeMenuIcon = document.getElementById('close-menu-icon');
+            navbarContent.classList.remove('active');
+            navbarLogo.classList.remove('hidden');
+            burgerMenu.classList.remove('hidden');
+            closeMenuIcon.style.display = 'none';
+            navbar.classList.remove('fixed-transparent');
+        });
+
+        document.getElementById('articleImageFile').addEventListener('change', function() {
+            const fileName = this.files.length ? this.files[0].name : 'Aucun fichier n’a été sélectionné';
+            document.getElementById('fileName').textContent = fileName;
+        });
+    </script>
+</body>
+
+</html>
