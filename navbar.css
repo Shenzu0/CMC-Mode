@@ -1,0 +1,237 @@
+/* Vos styles CSS ici */
+body {
+    font-family: 'General Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.unique-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    z-index: 1000;
+    font-size: 14px;
+}
+
+.unique-navbar.transparent {
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+}
+
+.unique-navbar.solid {
+    background-color: white;
+    color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.unique-navbar.fixed-transparent {
+    background-color: transparent !important;
+}
+
+.unique-navbar a {
+    color: inherit;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.unique-navbar.solid a {
+    color: black;
+}
+
+.unique-navbar-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.unique-navbar-logo {
+    margin-right: 20px;
+    width: 4%;
+}
+
+.content {
+    margin-top: 100px;
+    padding: 20px;
+    height: 2000px;
+    background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+}
+
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 10%;
+    z-index: 1100;
+}
+
+.burger-menu div {
+    width: 25px;
+    height: 2px;
+    background-color: rgb(255, 255, 255);
+    margin: 4px;
+    transition: 0.4s;
+}
+
+.burger-menu:hover div {
+    background-color: rgb(255, 255, 255);
+}
+
+.burger-menu.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-menu.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.close-menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.close-menu-icon div {
+    width: 25px;
+    height: 2px;
+    background-color: black;
+    margin: 4px;
+    transition: 0.4s;
+}
+
+.close-menu-icon:hover div {
+    background-color: gray;
+}
+
+.unique-navbar-content a:hover {
+    color: gray !important;
+}
+
+@media (min-width: 1200px) {
+    .unique-navbar-logo {
+        margin-left: 7%;
+    }
+}
+
+@media (max-width: 1050px) {
+    .burger-menu {
+        display: flex;
+    }
+
+    .unique-navbar-logo.hidden,
+    .burger-menu.hidden {
+        display: none;
+    }
+
+    .close-menu-icon {
+        display: none;
+    }
+
+    .unique-navbar-content {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .unique-navbar-content.active {
+        display: flex;
+        justify-content: flex-start;
+        padding-top: 100px;
+    }
+
+    .unique-navbar-content a {
+        margin: -20px;
+        color: white !important;
+        font-size: 24px;
+        text-transform: uppercase;
+        transition: color 0.3s;
+    }
+
+    .unique-navbar-content a:hover {
+        color: rgb(255, 244, 244) !important;
+        transform: scale(1.1);
+    }
+
+    .burger-menu div {
+        background-color: black;
+    }
+
+    .unique-navbar.solid .burger-menu div {
+        background-color: black;
+    }
+
+    .unique-navbar.transparent .burger-menu div {
+        background-color: white;
+    }
+
+    .unique-navbar-logo {
+        width: 8%;
+    }
+}
+
+@media (min-width: 1050px) {
+    .unique-navbar-content {
+        justify-content: space-between;
+        width: 100%;
+        margin-right: 10%;
+    }
+
+    .unique-navbar-logo {
+        margin-left: 2%;
+    }
+
+    .unique-navbar a {
+        font-size: 14px; /* Agrandir la taille de police pour les liens */
+    }
+
+    .unique-navbar a:hover {
+        color: black; 
+        background-color: white; 
+        padding: 5px 5px; 
+        border-radius: 5px; 
+        transform: scale(1.1);
+    }
+}
+
+.unique-navbar-logo {
+    width: auto;
+    height: 50px;
+    margin-right: 20px;
+    margin-left: 2%;
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding: 10px;
+    margin: 0 15px;
+    border-radius: 5px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.logout-button:hover {
+    color: white;
+    background-color: #333;
+}

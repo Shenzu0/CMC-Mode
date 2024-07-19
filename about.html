@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>À propos</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./navbar.css">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=General+Sans:wght@400&display=swap');
 
@@ -16,209 +18,7 @@
             color: #333;
         }
 
-        .unique-navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 20px;
-            transition: background-color 0.3s, color 0.3s;
-            z-index: 1000;
-            font-size: 14px;
-        }
-
-        .unique-navbar.transparent {
-            background-color: transparent;
-            color: white;
-        }
-
-        .unique-navbar.solid {
-            background-color: white;
-            color: black;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .unique-navbar.fixed-transparent {
-            background-color: transparent !important;
-        }
-
-        .unique-navbar a {
-            color: inherit;
-            text-decoration: none;
-            margin: 0 15px;
-            margin-left: -10%;
-            margin-right: 10%;
-            transition: color 0.3s;
-        }
-
-        .unique-navbar.solid a {
-            color: black;
-        }
-
-        .unique-navbar-content {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            gap: 60px;
-        }
-
-        .unique-navbar-logo {
-            margin-right: 20px;
-            width: 4%;
-        }
-
-        .content {
-            margin-top: 100px;
-            padding: 20px;
-        }
-
-        .burger-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            margin-right: 10%;
-            z-index: 1100;
-        }
-
-        .burger-menu div {
-            width: 25px;
-            height: 2px;
-            background-color: rgb(255, 255, 255);
-            margin: 4px;
-            transition: 0.4s;
-        }
-
-        .burger-menu:hover div {
-            background-color: rgb(255, 255, 255);
-        }
-
-        .burger-menu.active div:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .burger-menu.active div:nth-child(2) {
-            opacity: 0;
-        }
-
-        .burger-menu.active div:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        .close-menu-icon {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            z-index: 1100;
-        }
-
-        .close-menu-icon div {
-            width: 25px;
-            height: 2px;
-            background-color: black;
-            margin: 4px;
-            transition: 0.4s;
-        }
-
-        .close-menu-icon:hover div {
-            background-color: gray;
-        }
-
-        .unique-navbar-content a:hover {
-            color: gray !important;
-        }
-
-        @media (min-width: 768px) and (max-width: 1000px) {
-            .unique-navbar-logo {
-                margin-left: 10%;
-                margin-right: -10%;
-            }
-
-            .unique-navbar-content {
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                gap: 30px;
-                margin-left: -10%;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .unique-navbar-logo {
-                margin-left: 7%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .burger-menu {
-                display: flex;
-            }
-
-            .unique-navbar-logo.hidden,
-            .burger-menu.hidden {
-                display: none;
-            }
-
-            .close-menu-icon {
-                display: none;
-            }
-
-            .unique-navbar-content {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-                background-color: rgba(0, 0, 0, 0.8);
-                position: fixed;
-                top: 0;
-                left: 0;
-                height: 100%;
-                justify-content: center;
-                z-index: 1000;
-            }
-
-            .unique-navbar-content.active {
-                display: flex;
-                justify-content: flex-start;
-                padding-top: 100px;
-            }
-
-            .unique-navbar-content a {
-                margin: -20px;
-                color: white !important;
-                font-size: 24px;
-                text-transform: uppercase;
-                transition: color 0.3s;
-            }
-
-            .unique-navbar-content a:hover {
-                color: gray !important;
-            }
-
-            .burger-menu div {
-                background-color: black;
-            }
-
-            .unique-navbar.solid .burger-menu div {
-                background-color: black;
-            }
-
-            .unique-navbar.transparent .burger-menu div {
-                background-color: white;
-            }
-
-            .unique-navbar-logo {
-                width: 8%;
-            }
-        }
-
-        .unique-navbar-logo {
-            width: auto;
-            height: 50px;
-            margin-right: 20px;
-            margin-left: 2%;
-        }
+  
 
         .about-section {
             text-align: center;
@@ -324,10 +124,11 @@
     width: 100%; /* Ajuste la largeur de la carte à 50% du conteneur parent */
     height: 300px; /* Ajuste la hauteur de la carte à 100% du conteneur parent */
 }
-
+.edit-button {
+            display: none; /* Par défaut, masquer les boutons d'édition */
+        }
     </style>
 </head>
-
 <body>
 <div class="unique-navbar transparent" id="unique-navbar">
     <a href="index.html"><img src="./mg2/6681c1660d9613fbf3097b52_28a8288e-5e38-4119-805b-f6eb28d25c1b-p-130x130q80.webp" alt="Logo" class="unique-navbar-logo" id="navbar-logo"></a>
@@ -348,6 +149,7 @@
         <a href="contact.html" class="nav-link">CONTACT</a>
         <a href="faq.html" class="nav-link">FAQ</a>
         <a href="blog.html" class="nav-link">BLOG</a>
+        <button onclick="logout()">Déconnexion</button>
     </div>
 </div>
 
@@ -357,9 +159,9 @@
         <div class="about-description" id="about-description">
             <p>Bienvenue chez CMC MODE, votre destination mode incontournable au cœur de Calais Nord. Nous sommes une petite boutique pleine de charme, dédiée à vous offrir une expérience shopping unique et personnalisée située dans l'une des plus belles rues de Calais, notre boutique est un véritable trésor pour les amateurs de mode. Nous proposons une sélection soignée de vêtements tendance et de qualité, adaptés à toutes les occasions et à tous les styles. Que vous recherchiez une tenue élégante pour une soirée spéciale ou des pièces décontractées pour votre garde-robe quotidienne, vous trouverez chez nous des articles qui vous inspireront. Chez CMC MODE, chaque visiteur est accueilli avec chaleur et attention. Notre objectif est de vous offrir un service exceptionnel et des conseils mode personnalisés pour vous aider à trouver les pièces qui vous conviennent parfaitement. Nous croyons en la mode comme une expression de soi et nous sommes ici pour vous aider à exprimer votre style unique. Nous avons hâte de vous accueillir et de partager notre passion pour la mode avec vous. Venez découvrir nos collections et laissez-vous séduire par l'atmosphère conviviale et authentique.</p>
         </div>
-        <div class="edit-buttons" id="edit-buttons">
-            <button onclick="editDescription()">Modifier la description</button>
-            <button onclick="saveDescription()" style="display: none;">Enregistrer</button>
+        <div class="edit-buttons">
+            <button class="edit-button" onclick="editDescription()">Modifier la description</button>
+            <button class="edit-button" onclick="saveDescription()" style="display: none;">Enregistrer</button>
         </div>
     </div>
 
@@ -464,6 +266,9 @@
         editButtons.children[0].style.display = 'inline-block';
         editButtons.children[1].style.display = 'none';
     }
+
 </script>
+<script src="./session-check.js"></script>
+<script src="common.js"></script>
 </body>
 </html>

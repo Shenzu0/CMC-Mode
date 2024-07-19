@@ -29,6 +29,19 @@ app.use(session({
     store: store
 }));
 
+// Middleware de vérification de session
+app.use((req, res, next) => {
+    if (req.path.startsWith('/admin') && !req.session.admin) {
+        return res.status(401).send('Non autorisé');
+    }
+    next();
+});
+
+// Route pour vérifier la session
+app.get('/check-session', (req, res) => {
+    res.json({ isAdmin: !!req.session.admin });
+});
+
 // MySQL Database connection
 const db = mysql.createConnection({
     host: 'localhost',
@@ -52,6 +65,7 @@ mongoose.connect('mongodb://localhost:27017/shop').then(() => {
     console.error('Failed to connect to MongoDB', err);
 });
 
+// Define product schema and model
 const productSchema = new mongoose.Schema({
     title: String,
     description: String,
@@ -62,20 +76,41 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model('Product', productSchema);
 
-// Configure multer for file uploads
+// Define FAQ schema and model
+const faqSchema = new mongoose.Schema({
+    question: String,
+    answer: String,
+    category: String
+});
+
+const FAQ = mongoose.model('FAQ', faqSchema);
+
+// Ensure the 'uploads' directory exists
+const uploadDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+}
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        const uploadDir = path.join(__dirname, 'uploads');
-        if (!fs.existsSync(uploadDir)){
-            fs.mkdirSync(uploadDir, { recursive: true });
-        }
         cb(null, uploadDir);
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + path.extname(file.originalname));
     }
 });
+
 const upload = multer({ storage: storage });
+
+// Route pour l'upload des fichiers
+app.post('/upload', upload.single('file'), (req, res) => {
+    console.log(req.file);
+    if (req.file) {
+        res.json({ fileUrl: `/uploads/${req.file.filename}` });
+    } else {
+        res.status(400).send('File upload failed');
+    }
+});
 
 // Ensure the 'uploads' directory is served statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -104,17 +139,10 @@ app.post('/logout', (req, res) => {
             console.error('Failed to logout:', err);
             res.status(500).send('Failed to logout');
         } else {
+            console.log('User logged out successfully');
             res.json({ success: true });
         }
     });
-});
-
-app.use((req, res, next) => {
-    if (req.path.startsWith('/admin') && !req.session.admin) {
-        res.status(401).send('Non autorisé');
-    } else {
-        next();
-    }
 });
 
 // Save content
@@ -215,6 +243,21 @@ app.get('/api/products/:category', async (req, res) => {
     res.json(products);
 });
 
+// Get a product by ID
+app.get('/api/products/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const product = await Product.findById(id);
+        if (!product) {
+            return res.status(404).send('Produit non trouvé');
+        }
+        res.json(product);
+    } catch (error) {
+        console.error('Erreur lors de la récupération du produit:', error);
+        res.status(500).send('Erreur serveur');
+    }
+});
+
 // Add a new product
 app.post('/api/products', upload.single('image'), async (req, res) => {
     const { title, description, category } = req.body;
@@ -227,17 +270,44 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
 // Update a product
 app.put('/api/products/:id', upload.single('image'), async (req, res) => {
     const { id } = req.params;
-    const { title, description, category } = req.body;
+    console.log('PUT request received for product ID:', id);
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).send('Invalid product ID');
+    }
+
+    const { title, description } = req.body;
     const imageUrl = req.file ? `/uploads/${req.file.filename}` : req.body.imageUrl;
-    const updatedProduct = await Product.findByIdAndUpdate(id, { title, description, imageUrl, category }, { new: true });
-    res.json(updatedProduct);
+
+    try {
+        const updatedProduct = await Product.findByIdAndUpdate(
+            id,
+            { title, description, imageUrl },
+            { new: true }
+        );
+        if (!updatedProduct) {
+            return res.status(404).send('Produit non trouvé');
+        }
+        res.json(updatedProduct);
+    } catch (error) {
+        console.error('Erreur lors de la mise à jour du produit:', error);
+        res.status(500).send('Erreur serveur');
+    }
 });
 
 // Delete a product
 app.delete('/api/products/:id', async (req, res) => {
     const { id } = req.params;
-    await Product.findByIdAndDelete(id);
-    res.json({ message: 'Product deleted' });
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).send('Invalid product ID');
+    }
+
+    try {
+        await Product.findByIdAndDelete(id);
+        res.json({ message: 'Product deleted' });
+    } catch (error) {
+        console.error('Erreur lors de la suppression du produit:', error);
+        res.status(500).send('Erreur serveur');
+    }
 });
 
 // Get all articles
@@ -296,6 +366,60 @@ app.delete('/api/articles/:id', async (req, res) => {
     } catch (error) {
         console.error('Internal Server Error:', error);
         res.status(500).send('Internal Server Error');
+    }
+});
+
+// FAQ Routes
+
+// Get all FAQs
+app.get('/api/faqs', async (req, res) => {
+    try {
+        const faqs = await FAQ.find();
+        res.json(faqs);
+    } catch (error) {
+        console.error('Erreur lors de la récupération des FAQs:', error);
+        res.status(500).send('Erreur serveur');
+    }
+});
+
+// Add a new FAQ
+app.post('/api/faqs', async (req, res) => {
+    const { question, answer, category } = req.body;
+    const newFAQ = new FAQ({ question, answer, category });
+    try {
+        await newFAQ.save();
+        res.json(newFAQ);
+    } catch (error) {
+        console.error('Erreur lors de l\'ajout de la FAQ:', error);
+        res.status(500).send('Erreur serveur');
+    }
+});
+
+// Update an FAQ
+app.put('/api/faqs/:id', async (req, res) => {
+    const { id } = req.params;
+    const { question, answer, category } = req.body;
+    try {
+        const updatedFAQ = await FAQ.findByIdAndUpdate(id, { question, answer, category }, { new: true });
+        if (!updatedFAQ) {
+            return res.status(404).send('FAQ non trouvée');
+        }
+        res.json(updatedFAQ);
+    } catch (error) {
+        console.error('Erreur lors de la mise à jour de la FAQ:', error);
+        res.status(500).send('Erreur serveur');
+    }
+});
+
+// Delete an FAQ
+app.delete('/api/faqs/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        await FAQ.findByIdAndDelete(id);
+        res.json({ message: 'FAQ supprimée' });
+    } catch (error) {
+        console.error('Erreur lors de la suppression de la FAQ:', error);
+        res.status(500).send('Erreur serveur');
     }
 });
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Shop</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="./navbar.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=General+Sans:wght@400&display=swap');
         body {
@@ -11,184 +12,7 @@
             margin: 0;
             padding: 0;
         }
-        .unique-navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 20px;
-            transition: background-color 0.3s, color 0.3s;
-            z-index: 1000;
-            font-size: 14px;
-        }
-        .unique-navbar.transparent {
-            background-color: transparent;
-            color: white;
-        }
-        .unique-navbar.solid {
-            background-color: white;
-            color: black;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .unique-navbar.fixed-transparent {
-            background-color: transparent !important;
-        }
-        .unique-navbar a {
-            color: inherit;
-            text-decoration: none;
-            margin: 0 15px;
-            margin-left: -10%;
-            margin-right: 10%;
-            transition: color 0.3s;
-        }
-        .unique-navbar.solid a {
-            color: black;
-        }
-        .unique-navbar-content {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            gap: 60px;
-        }
-        .unique-navbar-logo {
-            margin-right: 20px;
-            width: 4%;
-        }
-        .content {
-            margin-top: 100px;
-            padding: 20px;
-            height: 2000px;
-            background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
-        }
-        .burger-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            margin-right: 10%;
-            z-index: 1100;
-        }
-        .burger-menu div {
-            width: 25px;
-            height: 2px;
-            background-color: rgb(255, 255, 255);
-            margin: 4px;
-            transition: 0.4s;
-        }
-        .burger-menu:hover div {
-            background-color: rgb(255, 255, 255);
-        }
-        .burger-menu.active div:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .burger-menu.active div:nth-child(2) {
-            opacity: 0;
-        }
-        .burger-menu.active div:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-        .close-menu-icon {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            z-index: 1100;
-        }
-        .close-menu-icon div {
-            width: 25px;
-            height: 2px;
-            background-color: black;
-            margin: 4px;
-            transition: 0.4s;
-        }
-        .close-menu-icon:hover div {
-            background-color: gray;
-        }
-        .unique-navbar-content a:hover {
-            color: gray !important;
-        }
-        @media (min-width: 768px) and (max-width: 1000px) {
-            .unique-navbar-logo {
-                margin-left: 10%;
-                margin-right: -10%;
-            }
-            .unique-navbar-content {
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                gap: 30px;
-                margin-left: -10%;
-            }
-        }
-        @media (min-width: 1200px) {
-            .unique-navbar-logo {
-                margin-left: 7%;
-            }
-        }
-        @media (max-width: 1050px) {
-            .burger-menu {
-                display: flex;
-            }
-            .unique-navbar-logo.hidden,
-            .burger-menu.hidden {
-                display: none;
-            }
-            .close-menu-icon {
-                display: none;
-            }
-            .unique-navbar-content {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-                background-color: rgba(0, 0, 0, 0.8);
-                position: fixed;
-                top: 0;
-                left: 0;
-                height: 100%;
-                justify-content: center;
-                z-index: 1000;
-            }
-            .unique-navbar-content.active {
-                display: flex;
-                justify-content: flex-start;
-                padding-top: 100px;
-            }
-            .unique-navbar-content a {
-                margin: -20px;
-                color: white !important;
-                font-size: 24px;
-                text-transform: uppercase;
-                transition: color 0.3s;
-            }
-            .unique-navbar-content a:hover {
-                color: gray !important;
-            }
-            .burger-menu div {
-                background-color: black;
-            }
-            .unique-navbar.solid .burger-menu div {
-                background-color: black;
-            }
-            .unique-navbar.transparent .burger-menu div {
-                background-color: white;
-            }
-            .unique-navbar-logo {
-                width: 8%;
-            }
-        }
-        .unique-navbar-logo {
-            width: auto;
-            height: 50px;
-            margin-right: 20px;
-            margin-left: 2%;
-        }
-        .unique-navbar-logo {
-            width: auto;
-            height: 50px;
-            margin-right: 20px;
-            margin-left: 2%;
-        }
+
         .shop-header {
             text-align: center;
             padding: 100px 0 50px;
@@ -359,6 +183,7 @@
             <a href="contact.html" class="nav-link">CONTACT</a>
             <a href="faq.html" class="nav-link">FAQ</a>
             <a href="blog.html" class="nav-link">BLOG</a>
+            <button onclick="logout()">Déconnexion</button>
         </div>
     </div>
     <div class="shop-header">
@@ -368,7 +193,7 @@
     <div class="products-grid" id="products-grid">
         <!-- Les cartes des produits seront générées ici -->
     </div>
-    <div class="admin-buttons" style="justify-content: center;">
+    <div class="admin-buttons edit-button" style="justify-content: center;">
         <button onclick="openModal()">Ajouter un produit</button>
     </div>
     <div id="productModal" class="modal">
@@ -381,7 +206,7 @@
             <label for="description">Description</label>
             <textarea id="description" placeholder="Description du produit"></textarea>
             <label for="imageFile">Sélectionner une image</label>
-            <input type="file" id="imageFile">
+            <input type="file" id="imageFile" accept="image/*">
             <button onclick="saveProduct()">Enregistrer</button>
         </div>
     </div>
@@ -397,52 +222,59 @@
         </div>
         <p class="bFoot">&copy; 2024 CMC MODE. Tous droits réservés.</p>
     </footer>
+
     <script>
         let isEditMode = false;
 
         async function fetchProducts() {
-            const response = await fetch('/api/products/shop');
-            const products = await response.json();
-            const productsGrid = document.getElementById('products-grid');
-            productsGrid.innerHTML = '';
-            products.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                productCard.id = `product-${product._id}`;
-                productCard.innerHTML = `
-                    <a href="product-detail.html?id=${product._id}">
-                        <img src="${product.imageUrl}" alt="${product.title}" class="product-image">
-                    </a>
-                    <div class="product-info">
-                        <div class="product-title">${product.title}</div>
-                        <div class="product-description">${product.description}</div>
-                    </div>
-                    <div class="admin-buttons">
-                        <button onclick="editProduct('${product._id}')">Modifier</button>
-                        <button onclick="deleteProduct('${product._id}')">Supprimer</button>
-                    </div>
-                `;
-                productsGrid.appendChild(productCard);
-            });
+            try {
+                const response = await fetch('/api/products/shop');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch products');
+                }
+                const products = await response.json();
+                const productsGrid = document.getElementById('products-grid');
+                productsGrid.innerHTML = '';
+                products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.id = `product-${product._id}`;
+                    productCard.innerHTML = `
+                        <a href="product-detail.html?id=${product._id}">
+                            <img src="${product.imageUrl}" alt="${product.title}" class="product-image">
+                        </a>
+                        <div class="product-info">
+                            <div class="product-title">${product.title}</div>
+                            <div class="product-description">${product.description}</div>
+                        </div>
+                        <div class="admin-buttons edit-button">
+                            <button class="edit-button" onclick="deleteProduct('${product._id}')">Supprimer</button>
+                        </div>
+                    `;
+                    productsGrid.appendChild(productCard);
+                });
+            } catch (error) {
+                console.error('Erreur lors de la récupération des produits:', error);
+            }
         }
 
         function openModal(product = null) {
+            console.log('openModal called with product:', product);
             const modal = document.getElementById('productModal');
             const modalTitle = document.getElementById('modalTitle');
             isEditMode = !!product;
             modal.style.display = 'block';
-            if (isEditMode) {
-                document.getElementById('productId').value = product._id;
-                document.getElementById('title').value = product.title;
-                document.getElementById('description').value = product.description;
-                document.getElementById('imageFile').value = '';
+            
+            if (isEditMode && product) {
+                document.getElementById('productId').value = product._id || '';
+                document.getElementById('title').value = product.title || '';
+                document.getElementById('description').value = product.description || '';
                 modalTitle.textContent = 'Modifier le produit';
             } else {
                 modalTitle.textContent = 'Ajouter un produit';
                 document.getElementById('productId').value = '';
                 document.getElementById('title').value = '';
                 document.getElementById('description').value = '';
-                document.getElementById('imageFile').value = '';
             }
         }
 
@@ -457,6 +289,10 @@
             const description = document.getElementById('description').value;
             const imageFile = document.getElementById('imageFile').files[0];
 
+            console.log('Saving product with ID:', productId);
+            console.log('Title:', title);
+            console.log('Description:', description);
+
             const formData = new FormData();
             formData.append('title', title);
             formData.append('description', description);
@@ -465,32 +301,59 @@
                 formData.append('image', imageFile);
             }
 
-            if (isEditMode) {
-                await fetch(`/api/products/${productId}`, {
-                    method: 'PUT',
-                    body: formData
-                });
-            } else {
-                await fetch('/api/products', {
-                    method: 'POST',
-                    body: formData
-                });
+            try {
+                if (isEditMode) {
+                    if (!productId) {
+                        throw new Error('Product ID is missing.');
+                    }
+                    const response = await fetch(`/api/products/${productId}`, {
+                        method: 'PUT',
+                        body: formData
+                    });
+                    if (!response.ok) {
+                        throw new Error('Failed to update product');
+                    }
+                } else {
+                    const response = await fetch('/api/products', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    if (!response.ok) {
+                        throw new Error('Failed to add product');
+                    }
+                }
+                closeModal();
+                fetchProducts();
+            } catch (error) {
+                console.error('Error saving product:', error);
             }
-            closeModal();
-            fetchProducts();
         }
 
         async function editProduct(id) {
-            const response = await fetch(`/api/products/${id}`);
-            const product = await response.json();
-            openModal(product);
+            try {
+                const response = await fetch(`/api/products/${id}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch product');
+                }
+                const product = await response.json();
+                openModal(product);
+            } catch (error) {
+                console.error('Erreur lors de la récupération du produit:', error);
+            }
         }
 
         async function deleteProduct(id) {
-            await fetch(`/api/products/${id}`, {
-                method: 'DELETE'
-            });
-            fetchProducts();
+            try {
+                const response = await fetch(`/api/products/${id}`, {
+                    method: 'DELETE'
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to delete product');
+                }
+                fetchProducts();
+            } catch (error) {
+                console.error('Erreur lors de la suppression du produit:', error);
+            }
         }
 
         window.onload = fetchProducts;
@@ -518,14 +381,7 @@
             navbarContent.classList.toggle('active');
         });
     </script>
+    <script src="./common.js"></script>
+    <script src="./session-check.js"></script>
 </body>
 </html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Boutique de vêtements tendance CMC Mode - Découvrez nos dernières collections de vêtements
-    et accesoires pour femmes.">
-    <meta name="keywords" content="mode, vêtements, boutique en ligne, CMC Mode, tendance">
-    <title>CMC Mode - Boutique de Vêtements Tendance</title>
-</head>
