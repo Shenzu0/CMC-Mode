@@ -7,6 +7,7 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const multer = require('multer');
 const fs = require('fs');
+const FAQ = require('./faq'); // Import the FAQ model
 
 const app = express();
 app.use(bodyParser.json());
@@ -28,19 +29,6 @@ app.use(session({
     saveUninitialized: false,
     store: store
 }));
-
-// Middleware de vérification de session
-app.use((req, res, next) => {
-    if (req.path.startsWith('/admin') && !req.session.admin) {
-        return res.status(401).send('Non autorisé');
-    }
-    next();
-});
-
-// Route pour vérifier la session
-app.get('/check-session', (req, res) => {
-    res.json({ isAdmin: !!req.session.admin });
-});
 
 // MySQL Database connection
 const db = mysql.createConnection({
@@ -65,25 +53,17 @@ mongoose.connect('mongodb://localhost:27017/shop').then(() => {
     console.error('Failed to connect to MongoDB', err);
 });
 
-// Define product schema and model
+// Define the Product schema and model
 const productSchema = new mongoose.Schema({
     title: String,
     description: String,
+    detailDescription: String,
     imageUrl: String,
     category: String,
     comments: [{ name: String, text: String }]
 });
 
 const Product = mongoose.model('Product', productSchema);
-
-// Define FAQ schema and model
-const faqSchema = new mongoose.Schema({
-    question: String,
-    answer: String,
-    category: String
-});
-
-const FAQ = mongoose.model('FAQ', faqSchema);
 
 // Ensure the 'uploads' directory exists
 const uploadDir = path.join(__dirname, 'uploads');
@@ -102,7 +82,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Route pour l'upload des fichiers
+// Route for file upload
 app.post('/upload', upload.single('file'), (req, res) => {
     console.log(req.file);
     if (req.file) {
@@ -139,10 +119,17 @@ app.post('/logout', (req, res) => {
             console.error('Failed to logout:', err);
             res.status(500).send('Failed to logout');
         } else {
-            console.log('User logged out successfully');
             res.json({ success: true });
         }
     });
+});
+
+app.use((req, res, next) => {
+    if (req.path.startsWith('/admin') && !req.session.admin) {
+        res.status(401).send('Non autorisé');
+    } else {
+        next();
+    }
 });
 
 // Save content
@@ -257,31 +244,34 @@ app.get('/api/products/:id', async (req, res) => {
         res.status(500).send('Erreur serveur');
     }
 });
-
 // Add a new product
 app.post('/api/products', upload.single('image'), async (req, res) => {
     const { title, description, category } = req.body;
     const imageUrl = req.file ? `/uploads/${req.file.filename}` : '';
     const newProduct = new Product({ title, description, imageUrl, category });
-    await newProduct.save();
-    res.json(newProduct);
+    try {
+        await newProduct.save();
+        res.json(newProduct);
+    } catch (error) {
+        console.error('Erreur lors de l\'ajout du produit:', error);
+        res.status(500).send('Erreur serveur');
+    }
 });
 
 // Update a product
 app.put('/api/products/:id', upload.single('image'), async (req, res) => {
     const { id } = req.params;
-    console.log('PUT request received for product ID:', id);
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(400).send('Invalid product ID');
     }
 
-    const { title, description } = req.body;
+    const { title, description, category } = req.body;
     const imageUrl = req.file ? `/uploads/${req.file.filename}` : req.body.imageUrl;
 
     try {
         const updatedProduct = await Product.findByIdAndUpdate(
             id,
-            { title, description, imageUrl },
+            { title, description, imageUrl, category },
             { new: true }
         );
         if (!updatedProduct) {
@@ -293,7 +283,6 @@ app.put('/api/products/:id', upload.single('image'), async (req, res) => {
         res.status(500).send('Erreur serveur');
     }
 });
-
 // Delete a product
 app.delete('/api/products/:id', async (req, res) => {
     const { id } = req.params;
@@ -302,7 +291,10 @@ app.delete('/api/products/:id', async (req, res) => {
     }
 
     try {
-        await Product.findByIdAndDelete(id);
+        const deletedProduct = await Product.findByIdAndDelete(id);
+        if (!deletedProduct) {
+            return res.status(404).send('Produit non trouvé');
+        }
         res.json({ message: 'Product deleted' });
     } catch (error) {
         console.error('Erreur lors de la suppression du produit:', error);
@@ -369,29 +361,15 @@ app.delete('/api/articles/:id', async (req, res) => {
     }
 });
 
-// FAQ Routes
-
-// Get all FAQs
-app.get('/api/faqs', async (req, res) => {
-    try {
-        const faqs = await FAQ.find();
-        res.json(faqs);
-    } catch (error) {
-        console.error('Erreur lors de la récupération des FAQs:', error);
-        res.status(500).send('Erreur serveur');
-    }
-});
-
-// Add a new FAQ
+// Create a new FAQ
 app.post('/api/faqs', async (req, res) => {
     const { question, answer, category } = req.body;
     const newFAQ = new FAQ({ question, answer, category });
     try {
         await newFAQ.save();
-        res.json(newFAQ);
+        res.status(201).json(newFAQ);
     } catch (error) {
-        console.error('Erreur lors de l\'ajout de la FAQ:', error);
-        res.status(500).send('Erreur serveur');
+        res.status(500).json({ error: 'Failed to create FAQ' });
     }
 });
 
@@ -400,14 +378,17 @@ app.put('/api/faqs/:id', async (req, res) => {
     const { id } = req.params;
     const { question, answer, category } = req.body;
     try {
-        const updatedFAQ = await FAQ.findByIdAndUpdate(id, { question, answer, category }, { new: true });
+        const updatedFAQ = await FAQ.findByIdAndUpdate(
+            id,
+            { question, answer, category },
+            { new: true }
+        );
         if (!updatedFAQ) {
-            return res.status(404).send('FAQ non trouvée');
+            return res.status(404).json({ error: 'FAQ not found' });
         }
-        res.json(updatedFAQ);
+        res.status(200).json(updatedFAQ);
     } catch (error) {
-        console.error('Erreur lors de la mise à jour de la FAQ:', error);
-        res.status(500).send('Erreur serveur');
+        res.status(500).json({ error: 'Failed to update FAQ' });
     }
 });
 
@@ -415,17 +396,37 @@ app.put('/api/faqs/:id', async (req, res) => {
 app.delete('/api/faqs/:id', async (req, res) => {
     const { id } = req.params;
     try {
-        await FAQ.findByIdAndDelete(id);
-        res.json({ message: 'FAQ supprimée' });
+        const deletedFAQ = await FAQ.findByIdAndDelete(id);
+        if (!deletedFAQ) {
+            return res.status(404).json({ error: 'FAQ not found' });
+        }
+        res.status(200).json({ message: 'FAQ deleted' });
     } catch (error) {
-        console.error('Erreur lors de la suppression de la FAQ:', error);
-        res.status(500).send('Erreur serveur');
+        res.status(500).json({ error: 'Failed to delete FAQ' });
+    }
+});
+
+// Get all FAQs
+app.get('/api/faqs', async (req, res) => {
+    try {
+        const faqs = await FAQ.find();
+        res.status(200).json(faqs);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch FAQs' });
     }
 });
 
 // Serve static files from the root directory
 app.use(express.static(path.join(__dirname)));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+app.get('/check-session', (req, res) => {
+    if (req.session.admin) {
+        res.json({ isAdmin: true });
+    } else {
+        res.json({ isAdmin: false });
+    }
+});
 
 // Serve specific HTML files
 app.get('/', (req, res) => {
@@ -460,6 +461,7 @@ app.get('/product-detail.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'product-detail.html'));
 });
 
+// Start the server
 app.listen(3000, () => {
     console.log('Server running on port 3000');
 });

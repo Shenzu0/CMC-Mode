@@ -2,8 +2,25 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Boutique de Vêtements, Bijoux et Accessoires pour Femmes à Calais - Petites et Grandes Tailles</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez notre boutique de vêtements, bijoux et accessoires pour femmes, située à Calais. Nous proposons une large gamme de tailles, petites et grandes tailles. Visitez-nous à Calais Nord pour trouver la tenue parfaite pour toute occasion.">
+    <meta name="keywords" content="boutique vêtements femmes, bijoux femmes, accessoires femmes, grandes tailles, petites tailles, Calais, Calais Nord, mode féminine, shopping Calais">
+    <meta name="author" content="CMC Mode">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Boutique de Vêtements, Bijoux et Accessoires pour Femmes à Calais - Petites et Grandes Tailles">
+    <meta property="og:description" content="Découvrez notre boutique de vêtements, bijoux et accessoires pour femmes, située à Calais. Nous proposons une large gamme de tailles, petites et grandes tailles. Visitez-nous à Calais Nord pour trouver la tenue parfaite pour toute occasion.">
+    <meta property="og:url" content="https://www.votre-site.com">
+    <meta property="og:image" content="https://www.votre-site.com/images/logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="CMC Mode">
+    <meta property="og:see_also" content="https://www.facebook.com/people/CMC-Mode/100083366191144/">
+    <meta property="business:contact_data:street_address" content="51 Rue de la Mer">
+    <meta property="business:contact_data:locality" content="Calais">
+    <meta property="business:contact_data:region" content="Hauts-de-France">
+    <meta property="business:contact_data:postal_code" content="62100">
+    <meta property="business:contact_data:country_name" content="France">
     <link rel="stylesheet" href="./navbar.css">
     <link href="https://fonts.googleapis.com/css2?family=General+Sans:wght@400;600&display=swap" rel="stylesheet">
 
@@ -553,6 +570,36 @@
     content: none; /* Supprimer le pseudo-élément */
 }
 
+@media (max-width: 730px) {
+    .products-section {
+        flex-direction: column;
+        align-items: center; /* Ajoutez cette ligne pour centrer les éléments */
+    }
+
+    .product-card {
+        margin: 10px auto; /* Centrez les cartes de produits */
+    }
+}
+.edit-button {
+    display: none; /* Masquer par défaut */
+}
+
+.admin .edit-button {
+    display: inline-block; /* Afficher en mode admin */
+}
+.section-blog .edit-button {
+    display: none; /* Assurez-vous que le bouton est masqué par défaut */
+}
+
+.admin .section-blog .edit-button {
+    display: inline-block; /* Afficher en mode admin */
+}
+
+.produits{
+    margin-bottom: 5%;
+    margin-top: 2%;
+}
+
 
     </style>
 </head>
@@ -580,7 +627,6 @@
             <a href="faq.html" class="nav-link">FAQ</a>
             <a href="blog.html" class="nav-link">BLOG</a>
             <a href="#" class="nav-link" onclick="logout()">DÉCONNEXION</a>
-            
         </nav>
     </header>
     <section class="hero hero background-cover">
@@ -591,7 +637,7 @@
     </section>
     <section class="section">
         <h2>Nos Produits</h2>
-        <p>Découvrez notre gamme de produits uniques et de haute qualité. Cliquez ci-dessous pour voir notre collection complète.</p>
+        <p class="produits">Découvrez notre gamme de produits uniques et de haute qualité. Cliquez ci-dessous pour voir notre collection complète.</p>
         <div class="products-section" id="products-section">
             <!-- Les produits seront affichés ici -->
         </div>
@@ -620,13 +666,11 @@
             <a href="blog.html" class="button">Accéder au Blog</a>
         </div>
     </section>
-  
-
     <footer class="footer">
         <div class="footer-wrapper">
             <a href="index.html"><img src="mg2/6681c1660d9613fbf3097b52_28a8288e-5e38-4119-805b-f6eb28d25c1b-p-130x130q80.webp" alt="CMC MODE" class="footer-logo"></a>
             <div class="footer-links">
-                <a href="#">Politique de données</a>
+                <a href="./politiqueDonnées.html">Politique de données</a>
             </div>
             <div class="social-links">
                 <a href="#"><img src="images/facebook-icon.svg" alt="Facebook"></a>
@@ -649,7 +693,6 @@
             <button onclick="saveProduct()">Enregistrer</button>
         </div>
     </div>
-    
 
     <script>
         let isEditMode = false;
@@ -667,7 +710,6 @@
             }
         });
 
-
         document.getElementById('close-menu-icon').addEventListener('click', function() {
             const navbarContent = document.getElementById('unique-navbar-content');
             const navbarLogo = document.getElementById('navbar-logo');
@@ -679,6 +721,7 @@
             closeMenuIcon.style.display = 'none';
             navbar.classList.remove('fixed-transparent');
         });
+
         document.addEventListener('DOMContentLoaded', function () {
             fetch('/get-reviews')
                 .then(response => response.json())
@@ -712,7 +755,7 @@
             // Animation on scroll
             const sections = document.querySelectorAll('.section');
             const options = {
-                threshold: 0.3
+                threshold: 0.2
             };
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -805,19 +848,19 @@
             document.body.classList.remove('admin');
         }
 
-// Fonction pour déconnexion
-function logout() {
-    fetch('/logout', { method: 'POST' })
-        .then(response => {
-            if (response.ok) {
-                // Supprimer la classe admin du corps pour masquer les boutons modifier
-                document.body.classList.remove('admin');
-                window.location.reload();
-            } else {
-                console.error('Failed to logout');
-            }
-        });
-}
+        // Fonction pour déconnexion
+        function logout() {
+            fetch('/logout', { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        // Supprimer la classe admin du corps pour masquer les boutons modifier
+                        document.body.classList.remove('admin');
+                        window.location.reload();
+                    } else {
+                        console.error('Failed to logout');
+                    }
+                });
+        }
 
         async function openModal(product = null) {
             const modal = document.getElementById('productModal');
@@ -916,67 +959,54 @@ function logout() {
                 .catch(error => console.error('Error:', error));
         }
 
-// Fonction pour gérer l'upload de l'image de fond
-function uploadBackgroundImage(event, sectionId) {
-    const file = event.target.files[0];
-    const formData = new FormData();
-    formData.append('image', file);
-    formData.append('section', sectionId);
+        // Fonction pour gérer l'upload de l'image de fond
+        function uploadBackgroundImage(event, sectionId) {
+            const file = event.target.files[0];
+            const formData = new FormData();
+            formData.append('image', file);
+            formData.append('section', sectionId);
 
-    fetch('/upload-background-image', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            const section = document.querySelector(`.${sectionId}`);
-            // Supprimer l'image de fond actuelle
-            section.style.backgroundImage = 'none';
-            // Ajouter la nouvelle image de fond
-            section.style.backgroundImage = `url(${data.filePath})`;
-            // Ajouter la classe de fond pour la nouvelle image si nécessaire
-            if (!section.classList.contains('background-cover')) {
-                section.classList.add('background-cover');
-            }
-        } else {
-            alert('Échec du téléchargement de l\'image');
+            fetch('/upload-background-image', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const section = document.querySelector(`.${sectionId}`);
+                    // Supprimer l'image de fond actuelle
+                    section.style.backgroundImage = 'none';
+                    // Ajouter la nouvelle image de fond
+                    section.style.backgroundImage = `url(${data.filePath})`;
+                    // Ajouter la classe de fond pour la nouvelle image si nécessaire
+                    if (!section.classList.contains('background-cover')) {
+                        section.classList.add('background-cover');
+                    }
+                } else {
+                    alert('Échec du téléchargement de l\'image');
+                }
+            })
+            .catch(error => console.error('Error:', error));
         }
-    })
-    .catch(error => console.error('Error:', error));
-}
 
-// Fonction pour ouvrir le sélecteur de fichier
-function editBackgroundImage(section) {
-    const fileInput = document.getElementById(`upload-${section}-bg`);
-    fileInput.click();
-}
-
-// Activer le mode admin (à appeler lors de la connexion de l'administrateur)
-enableAdminMode();
-
-        // Définir la fonction manquante editBackgroundImage
+        // Fonction pour ouvrir le sélecteur de fichier
         function editBackgroundImage(section) {
             const fileInput = document.getElementById(`upload-${section}-bg`);
             fileInput.click();
         }
 
-        // Activer le mode admin (à appeler lors de la connexion de l'administrateur)
-        enableAdminMode();
-
         document.addEventListener('DOMContentLoaded', function () {
-    fetch('/check-session')
-        .then(response => response.json())
-        .then(data => {
-            if (data.isAdmin) {
-                document.body.classList.add('admin');
-            } else {
-                document.body.classList.remove('admin');
-            }
-        })
-        .catch(error => console.error('Error checking session:', error));
-});
-
+            fetch('/check-session')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.isAdmin) {
+                        document.body.classList.add('admin');
+                    } else {
+                        document.body.classList.remove('admin');
+                    }
+                })
+                .catch(error => console.error('Error checking session:', error));
+        });
     </script>
 </body>
 </html>
