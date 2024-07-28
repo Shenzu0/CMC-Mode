@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Boutique de Vêtements, Bijoux et Accessoires pour Femmes à Calais - Petites et Grandes Tailles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez notre boutique de vêtements, bijoux et accessoires pour femmes, située à Calais. Nous proposons une large gamme de tailles, petites et grandes tailles. Visitez-nous à Calais Nord pour trouver la tenue parfaite pour toute occasion.">
+    <meta name="keywords" content="boutique vêtements femmes, bijoux femmes, accessoires femmes, grandes tailles, petites tailles, Calais, Calais Nord, mode féminine, shopping Calais">
+    <meta name="author" content="CMC Mode">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Boutique de Vêtements, Bijoux et Accessoires pour Femmes à Calais - Petites et Grandes Tailles">
+    <meta property="og:description" content="Découvrez notre boutique de vêtements, bijoux et accessoires pour femmes, située à Calais. Nous proposons une large gamme de tailles, petites et grandes tailles. Visitez-nous à Calais Nord pour trouver la tenue parfaite pour toute occasion.">
+    <meta property="og:url" content="https://www.votre-site.com">
+    <meta property="og:image" content="https://www.votre-site.com/images/logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="CMC Mode">
+    <meta property="og:see_also" content="https://www.facebook.com/people/CMC-Mode/100083366191144/">
+    <meta property="business:contact_data:street_address" content="51 Rue de la Mer">
+    <meta property="business:contact_data:locality" content="Calais">
+    <meta property="business:contact_data:region" content="Hauts-de-France">
+    <meta property="business:contact_data:postal_code" content="62100">
+    <meta property="business:contact_data:country_name" content="France">
+    <link href="https://fonts.googleapis.com/css2?family=General+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./navbar.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #000000;
+            font-family: 'Lato', sans-serif;
+        }
+
+
+        .section {
+            padding: 50px 20px;
+        }
+
+        .blog-header {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .blog-header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: ;
+        }
+
+        .blog-header p {
+            font-size: 1.2em;
+        }
+
+        .post {
+            background-color: #312d2d;
+            border: 1px solid #444;
+            border-radius: 10px;
+            margin: 20px auto; /* Centrer horizontalement */
+            padding: 20px;
+            max-width: 600px; /* Limite la largeur maximale du conteneur */
+            width: 100%; /* Assurez-vous qu'il occupe toute la largeur disponible jusqu'à la limite */
+            
+        }
+
+        .post-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .comment-section {
+            margin-top: 30px;
+        }
+
+        .comment {
+            background-color: #ffffff;
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            color: #000000;
+        } 
+
+        .comment-author {
+            font-weight: bold;
+        }
+
+        .comment-text {
+            margin-top: 5px;
+        }
+
+        .comment-form {
+            margin-top: 20px;
+        }
+
+        .comment-form textarea,
+        .comment-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #444;
+            color: #ffffff;
+        }
+
+        .comment-form button {
+            padding: 10px 20px;
+            background-color: #ff6600;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .comment-form button:hover {
+            background-color: #e65c00;
+        }
+
+        .facebook-section {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 10px;
+    text-align: center; /* Center align the content */
+}
+
+.facebook-section h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.fb-page {
+    display: inline-block; /* Center the fb-page */
+    width: 100%;
+}
+
+.publication-title {
+            color: white; /* Change la couleur du texte en blanc */
+            font-size: 3em; /* Agrandit la taille du texte */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Ajoute une ombre au texte pour une meilleure lisibilité */
+        }
+
+        .publication-description {
+    color: white; /* Change la couleur du texte en blanc */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Ajoute une ombre au texte pour une meilleure lisibilité */
+}
+
+
+
+        .modal-content input[type="text"],
+        .modal-content textarea,
+        .modal-content input[type="file"] {
+            width: calc(100% - 20px); /* Full width minus padding */
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .modal-content button {
+            padding: 10px 20px;
+            background-color: #ff6600;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background-color: #e65c00;
+        }
+
+        .modal-content label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 500px; /* Max width for the modal */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        #articleModalContent,
+        #commentModalContent {
+            max-width: 500px; /* Reduce the max width */
+            width: 90%; /* Ensure it uses the full width up to max-width */
+        }
+
+        #articleModalContent label,
+        #commentModalContent label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        #articleModalContent input[type="text"],
+        #commentModalContent input[type="text"],
+        #articleModalContent textarea,
+        #commentModalContent textarea,
+        #articleModalContent input[type="file"] {
+            width: calc(100% - 20px); /* Full width minus padding */
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #eee;
+        }
+
+        #articleModalContent button,
+        #commentModalContent button {
+            padding: 10px 20px;
+            background-color: #ff6600;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        #articleModalContent button:hover,
+        #commentModalContent button:hover {
+            background-color: #e65c00;
+        }
+        .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+.fade-in-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Effet de lumière */
+.light-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.light-effect::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent);
+    transform: translateX(-50%) translateY(-50%) scale(0);
+    transition: transform 0.5s ease-out;
+    z-index: 0;
+}
+
+.light-effect:hover::before {
+    transform: translateX(-50%) translateY(-50%) scale(1.2);
+    transition: transform 1s ease-out;
+}
+
+/* Style des articles */
+.post {
+    position: relative;
+    background-color: #312d2d;
+    border: 1px solid #444;
+    border-radius: 10px;
+    margin: 20px auto; /* Centrer horizontalement */
+    padding: 20px;
+    max-width: 600px; /* Limite la largeur maximale du conteneur */
+    width: 100%; /* Assurez-vous qu'il occupe toute la largeur disponible jusqu'à la limite */
+    overflow: hidden;
+    z-index: 1;
+}
+
+.post-title {
+    position: relative;
+    z-index: 1;
+}
+
+.post-image {
+    position: relative;
+    z-index: 1;
+}
+
+.post-content {
+    position: relative;
+    z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fade-in {
+        transition: none;
+    }
+}
+.comment-section h3 {
+    color: white;
+    font-size: 1.5em; 
+    margin-bottom: 20px;
+}
+.footer {
+            padding: 20px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 50px;
+        }
+
+        .footer-links, .social-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a, .social-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .footer-links a:hover, .social-links a:hover {
+            color: gray;
+        }
+
+        .bFoot {
+            margin-top: 10px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="unique-navbar transparent" id="unique-navbar">
+        <a href="index.html"><img src="./mg2/6681c1660d9613fbf3097b52_28a8288e-5e38-4119-805b-f6eb28d25c1b-p-130x130q80.webp" alt="Logo" class="unique-navbar-logo" id="navbar-logo"></a>
+
+        <div class="burger-menu" id="burger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="close-menu-icon" id="close-menu-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav class="unique-navbar-content" id="unique-navbar-content">
+            <a href="index.html" class="nav-link">ACCUEIL</a>
+            <a href="shop.html" class="nav-link">PRODUITS</a>
+            <a href="about.html" class="nav-link">À PROPOS</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="blog.html" class="nav-link">BLOG</a>
+            <a href="#" class="nav-link" onclick="logout()">DÉCONNEXION</a>
+        </nav>
+    </div>
+
+    <div class="blog-header">
+        <h1>Blog</h1>
+        <p>Découvrez nos dernières actualités, tendances et inspirations</p>
+    </div>
+    <div class="section" id="articles-grid">
+        
+        <!-- Articles will be dynamically loaded here -->
+    </div>
+
+    <div class="admin-buttons" id="admin-buttons" style="display: none; justify-content: center;">
+        <button onclick="openArticleModal()">Ajouter un article</button>
+    </div>
+
+    <div id="articleModal" class="modal">
+        <div id="articleModalContent" class="modal-content">
+            <span class="close" onclick="closeArticleModal()">&times;</span>
+            <h2 id="articleModalTitle">Ajouter un article</h2>
+            <input type="hidden" id="articleId">
+            <label for="articleTitle">Titre</label>
+            <input type="text" id="articleTitle" placeholder="Titre de l'article">
+            <label for="articleDescription">Description</label>
+            <textarea id="articleDescription" placeholder="Description de l'article"></textarea>
+            <label for="articleImageFile">Sélectionner une image</label>
+            <input type="file" id="articleImageFile">
+            <span id="fileName">Aucun fichier n’a été sélectionné</span>
+            <button onclick="saveArticle()">Enregistrer</button>
+        </div>
+    </div>
+
+    <div id="commentModal" class="modal">
+        <div id="commentModalContent" class="modal-content">
+            <span class="close" onclick="closeCommentModal()">&times;</span>
+            <h2 id="commentModalTitle">Ajouter un commentaire</h2>
+            <input type="hidden" id="commentArticleId">
+            <label for="commentName">Nom</label>
+            <input type="text" id="commentName" placeholder="Votre nom">
+            <label for="commentText">Commentaire</label>
+            <textarea id="commentText" placeholder="Votre commentaire"></textarea>
+            <button onclick="saveComment()">Enregistrer</button>
+        </div>
+    </div>
+
+    <div class="facebook-section">
+        <h2>Publications Facebook</h2>
+        <div class="fb-page" 
+             data-href="https://www.facebook.com/MonEntreprise" 
+             data-tabs="timeline" 
+             data-width="500" 
+             data-height="600" 
+             data-small-header="false" 
+             data-adapt-container-width="true" 
+             data-hide-cover="false" 
+             data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/MonEntreprise" class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/MonEntreprise">MonEntreprise</a>
+            </blockquote>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <a href="index.html"><img src="./mg2/6681c1660d9613fbf3097b52_28a8288e-5e38-4119-805b-f6eb28d25c1b-p-130x130q80.webp" alt="CMC MODE" class="footer-logo"></a>
+            <div class="footer-links">
+                <a href="./politiqueDonnées.html">Politique de données</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><img src="images/facebook-icon.svg" alt="Facebook"></a>
+            </div>
+        </div>
+        <p class="bFoot">&copy; 2024 CMC MODE. Tous droits réservés.</p>
+    </footer>
+
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v12.0"></script>
+    <script>
+        let isEditMode = false;
+        let isAdmin = false;
+    
+        async function fetchArticles() {
+            try {
+                const response = await fetch('/api/articles');
+                const articles = await response.json();
+                const articlesGrid = document.getElementById('articles-grid');
+                articlesGrid.innerHTML = '';
+                articles.forEach(article => {
+                    const articleCard = document.createElement('div');
+                    articleCard.className = 'post fade-in light-effect';
+                    articleCard.id = `article-${article._id}`;
+                    articleCard.innerHTML = `
+                        <h2 class="post-title publication-title">${article.title}</h2>
+                        <img src="${article.imageUrl}" alt="${article.title}" class="post-image">
+                        <div class="post-content publication-description">${article.description}</div>
+                        ${isAdmin ? `
+                        <div class="admin-buttons">
+                            <button onclick="deleteArticle('${article._id}')">Supprimer</button>
+                        </div>
+                        ` : ''}
+                        <div class="comment-section">
+                            <h3>Commentaires</h3>
+                            ${article.comments.map(comment => `
+                                <div class="comment">
+                                    <p><strong>${comment.name}</strong>: ${comment.text}</p>
+                                    ${isAdmin ? `<button onclick="deleteComment('${article._id}', '${comment._id}')">Supprimer</button>` : ''}
+                                </div>
+                            `).join('')}
+                            <button onclick="openCommentModal('${article._id}')">Ajouter un commentaire</button>
+                        </div>
+                    `;
+                    articlesGrid.appendChild(articleCard);
+                });
+                handleScroll(); // Call to handle initial load
+            } catch (error) {
+                console.error('Failed to fetch articles', error);
+            }
+        }
+    
+        function handleScroll() {
+            const fadeIns = document.querySelectorAll('.fade-in');
+    
+            fadeIns.forEach(element => {
+                if (element.getBoundingClientRect().top < window.innerHeight) {
+                    element.classList.add('fade-in-visible');
+                }
+            });
+        }
+    
+        window.addEventListener('scroll', handleScroll);
+    
+        window.onload = checkAdmin;
+    
+        // Rest of your code...
+    
+        function openArticleModal(article = null) {
+            const modal = document.getElementById('articleModal');
+            const modalTitle = document.getElementById('articleModalTitle');
+            isEditMode = !!article;
+            modal.style.display = 'block';
+            if (isEditMode) {
+                document.getElementById('articleId').value = article._id;
+                document.getElementById('articleTitle').value = article.title;
+                document.getElementById('articleDescription').value = article.description;
+                document.getElementById('articleImageFile').value = '';
+                modalTitle.textContent = 'Modifier l\'article';
+            } else {
+                modalTitle.textContent = 'Ajouter un article';
+                document.getElementById('articleId').value = '';
+                document.getElementById('articleTitle').value = '';
+                document.getElementById('articleDescription').value = '';
+                document.getElementById('articleImageFile').value = '';
+            }
+        }
+    
+        function closeArticleModal() {
+            const modal = document.getElementById('articleModal');
+            modal.style.display = 'none';
+        }
+    
+        function openCommentModal(articleId) {
+            const modal = document.getElementById('commentModal');
+            document.getElementById('commentArticleId').value = articleId;
+            modal.style.display = 'block';
+        }
+    
+        function closeCommentModal() {
+            const modal = document.getElementById('commentModal');
+            modal.style.display = 'none';
+        }
+    
+        async function saveArticle() {
+            const articleId = document.getElementById('articleId').value;
+            const title = document.getElementById('articleTitle').value;
+            const description = document.getElementById('articleDescription').value;
+            const imageFile = document.getElementById('articleImageFile').files[0];
+    
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', description);
+            if (imageFile) {
+                formData.append('image', imageFile);
+            }
+    
+            try {
+                if (isEditMode) {
+                    await fetch(`/api/articles/${articleId}`, {
+                        method: 'PUT',
+                        body: formData
+                    });
+                } else {
+                    await fetch('/api/articles', {
+                        method: 'POST',
+                        body: formData
+                    });
+                }
+                closeArticleModal();
+                fetchArticles();
+            } catch (error) {
+                console.error('Failed to save article', error);
+            }
+        }
+    
+        async function deleteArticle(id) {
+            try {
+                await fetch(`/api/articles/${id}`, {
+                    method: 'DELETE'
+                });
+                fetchArticles();
+            } catch (error) {
+                console.error('Failed to delete article', error);
+            }
+        }
+    
+        async function saveComment() {
+            const articleId = document.getElementById('commentArticleId').value;
+            const name = document.getElementById('commentName').value;
+            const text = document.getElementById('commentText').value;
+    
+            try {
+                await fetch(`/api/articles/${articleId}/comments`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, text })
+                });
+                closeCommentModal();
+                fetchArticles();
+            } catch (error) {
+                console.error('Failed to save comment', error);
+            }
+        }
+    
+        async function deleteComment(articleId, commentId) {
+            try {
+                await fetch(`/api/articles/${articleId}/comments/${commentId}`, {
+                    method: 'DELETE'
+                });
+                fetchArticles();
+            } catch (error) {
+                console.error('Failed to delete comment', error);
+            }
+        }
+    
+        async function checkAdmin() {
+            try {
+                const response = await fetch('/check-session');
+                const data = await response.json();
+                isAdmin = data.isAdmin;
+                if (isAdmin) {
+                    document.getElementById('admin-buttons').style.display = 'flex';
+                }
+                fetchArticles();
+            } catch (error) {
+                console.error('Failed to check admin session', error);
+            }
+        }
+    
+        window.onload = checkAdmin;
+    
+        window.onclick = function(event) {
+            const articleModal = document.getElementById('articleModal');
+            const commentModal = document.getElementById('commentModal');
+            if (event.target == articleModal) {
+                articleModal.style.display = 'none';
+            }
+            if (event.target == commentModal) {
+                commentModal.style.display = 'none';
+            }
+        }
+    
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('unique-navbar');
+            const navbarContent = document.getElementById('unique-navbar-content');
+            if (!navbarContent.classList.contains('active')) {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('transparent');
+                    navbar.classList.add('solid');
+                } else {
+                    navbar.classList.remove('solid');
+                    navbar.classList.add('transparent');
+                }
+            }
+        });
+    
+        document.getElementById('burger-menu').addEventListener('click', function() {
+            const navbarContent = document.getElementById('unique-navbar-content');
+            const navbarLogo = document.getElementById('navbar-logo');
+            const burgerMenu = document.getElementById('burger-menu');
+            const closeMenuIcon = document.getElementById('close-menu-icon');
+            navbarContent.classList.toggle('active');
+            navbarLogo.classList.toggle('hidden');
+            burgerMenu.classList.toggle('hidden');
+            closeMenuIcon.style.display = navbarContent.classList.contains('active') ? 'flex' : 'none';
+    
+            if (navbarContent.classList.contains('active')) {
+                navbar.classList.add('fixed-transparent');
+            } else {
+                navbar.classList.remove('fixed-transparent');
+            }
+        });
+    
+        document.getElementById('articleImageFile').addEventListener('change', function() {
+            const fileName = this.files.length ? this.files[0].name : 'Aucun fichier n’a été sélectionné';
+            document.getElementById('fileName').textContent = fileName;
+        });
+    </script>
+    <script src="./session-check.js"></script>
+    <script src="common.js"></script>
+    
+        </body>
+        </html>
+    

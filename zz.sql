@@ -1,0 +1,18 @@
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    imageUrl VARCHAR(255)
+);
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE content (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    element_id VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL
+);

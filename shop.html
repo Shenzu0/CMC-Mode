@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Boutique de Vêtements, Bijoux et Accessoires pour Femmes à Calais - Petites et Grandes Tailles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez notre boutique de vêtements, bijoux et accessoires pour femmes, située à Calais. Nous proposons une large gamme de tailles, petites et grandes tailles. Visitez-nous à Calais Nord pour trouver la tenue parfaite pour toute occasion.">
+    <meta name="keywords" content="boutique vêtements femmes, bijoux femmes, accessoires femmes, grandes tailles, petites tailles, Calais, Calais Nord, mode féminine, shopping Calais">
+    <meta name="author" content="CMC Mode">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Boutique de Vêtements, Bijoux et Accessoires pour Femmes à Calais - Petites et Grandes Tailles">
+    <meta property="og:description" content="Découvrez notre boutique de vêtements, bijoux et accessoires pour femmes, située à Calais. Nous proposons une large gamme de tailles, petites et grandes tailles. Visitez-nous à Calais Nord pour trouver la tenue parfaite pour toute occasion.">
+    <meta property="og:url" content="https://www.votre-site.com">
+    <meta property="og:image" content="https://www.votre-site.com/images/logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="CMC Mode">
+    <meta property="og:see_also" content="https://www.facebook.com/people/CMC-Mode/100083366191144/">
+    <meta property="business:contact_data:street_address" content="51 Rue de la Mer">
+    <meta property="business:contact_data:locality" content="Calais">
+    <meta property="business:contact_data:region" content="Hauts-de-France">
+    <meta property="business:contact_data:postal_code" content="62100">
+    <meta property="business:contact_data:country_name" content="France">
+    <link rel="stylesheet" href="./navbar.css">
+    <style>
+        body {
+            font-family: 'General Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .shop-header {
+            text-align: center;
+            padding: 100px 0 50px;
+            margin-top: 70px;
+        }
+
+        .shop-header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .shop-header p {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            flex: 1;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px;
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .product-description {
+            font-size: 1em;
+            color: #666;
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #f1f1f1;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-logo {
+            height: 50px;
+        }
+
+        .footer-links,
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a,
+        .social-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .footer-links a:hover,
+        .social-links a:hover {
+            color: gray;
+        }
+
+        .bFoot {
+            margin-top: 10px;
+        }
+
+        .admin-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .admin-buttons button {
+            padding: 10px 20px;
+            border: none;
+            background: #000000;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .admin-buttons button:hover {
+            background: #e1e0e0;
+            color: #000000;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content input,
+        .modal-content textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .modal-content button {
+            width: 100%;
+            background-color: #000000;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background-color: #e1e0e0;
+            color: black;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .product-description {
+    display: none;
+}
+
+    </style>
+</head>
+<body>
+    <div class="unique-navbar transparent" id="unique-navbar">
+        <a href="index.html"><img src="./mg2/6681c1660d9613fbf3097b52_28a8288e-5e38-4119-805b-f6eb28d25c1b-p-130x130q80.webp" alt="CMC MODE" class="unique-navbar-logo" id="navbar-logo"></a>
+        <div class="burger-menu" id="burger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav class="unique-navbar-content" id="unique-navbar-content">
+            <a href="index.html" class="nav-link">ACCUEIL</a>
+            <a href="shop.html" class="nav-link">PRODUITS</a>
+            <a href="about.html" class="nav-link">À PROPOS</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="blog.html" class="nav-link">BLOG</a>
+            <a href="#" class="nav-link" onclick="logout()">DÉCONNEXION</a>
+        </nav>
+    </div>
+    <div class="shop-header">
+        <h1>Nos Produits</h1>
+        <p>Découvrez notre sélection exclusive</p>
+    </div>
+    <div class="products-grid" id="products-grid">
+        <!-- Les cartes des produits seront générées ici -->
+    </div>
+    <div class="admin-buttons edit-button" id="admin-buttons" style="justify-content: center;">
+        <button onclick="openModal()">Ajouter un produit</button>
+    </div>
+    <div id="productModal" class="modal">
+        <div id="productModalContent" class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Ajouter un produit</h2>
+            <input type="hidden" id="productId">
+            <label for="title">Titre</label>
+            <input type="text" id="title" placeholder="Titre du produit">
+            <label for="description">Description</label>
+            <textarea id="description" placeholder="Description du produit"></textarea>
+            <label for="imageFile">Sélectionner une image</label>
+            <input type="file" id="imageFile" accept="image/*">
+            <button onclick="saveProduct()">Enregistrer</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <a href="index.html"><img src="./mg2/6681c1660d9613fbf3097b52_28a8288e-5e38-4119-805b-f6eb28d25c1b-p-130x130q80.webp" alt="CMC MODE" class="footer-logo"></a>
+            <div class="footer-links">
+                <a href="./politiqueDonnées.html">Politique de données</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><img src="images/facebook-icon.svg" alt="Facebook"></a>
+            </div>
+        </div>
+        <p class="bFoot">&copy; 2024 CMC MODE. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        let isAdmin = false;
+        async function fetchProducts() {
+    try {
+        const response = await fetch('/api/products/shop');
+        if (!response.ok) {
+            throw new Error('Failed to fetch products');
+        }
+        const products = await response.json();
+        const productsGrid = document.getElementById('products-grid');
+        productsGrid.innerHTML = '';
+        products.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.id = `product-${product._id}`;
+            productCard.innerHTML = `
+                <a href="product-detail.html?id=${product._id}">
+                    <img src="${product.imageUrl}" alt="${product.title}" class="product-image">
+                </a>
+                <div class="product-info">
+                    <div class="product-title">${product.title}</div>
+                </div>
+                ${isAdmin ? `
+                <div class="admin-buttons edit-button">
+                    <button class="edit-button" onclick="deleteProduct('${product._id}')">Supprimer</button>
+                </div>` : ''}
+            `;
+            productsGrid.appendChild(productCard);
+        });
+    } catch (error) {
+        console.error('Erreur lors de la récupération des produits:', error);
+    }
+}
+
+        function openModal(product = null) {
+            console.log('openModal called with product:', product);
+            const modal = document.getElementById('productModal');
+            const modalTitle = document.getElementById('modalTitle');
+            isEditMode = !!product;
+            modal.style.display = 'block';
+            
+            if (isEditMode && product) {
+                document.getElementById('productId').value = product._id || '';
+                document.getElementById('title').value = product.title || '';
+                document.getElementById('description').value = product.description || '';
+                modalTitle.textContent = 'Modifier le produit';
+            } else {
+                modalTitle.textContent = 'Ajouter un produit';
+                document.getElementById('productId').value = '';
+                document.getElementById('title').value = '';
+                document.getElementById('description').value = '';
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('productModal');
+            modal.style.display = 'none';
+        }
+
+        async function saveProduct() {
+            const productId = document.getElementById('productId').value;
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const imageFile = document.getElementById('imageFile').files[0];
+
+            console.log('Saving product with ID:', productId);
+            console.log('Title:', title);
+            console.log('Description:', description);
+
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', description);
+            formData.append('category', 'shop');
+            if (imageFile) {
+                formData.append('image', imageFile);
+            }
+
+            try {
+                if (isEditMode) {
+                    if (!productId) {
+                        throw new Error('Product ID is missing.');
+                    }
+                    const response = await fetch(`/api/products/${productId}`, {
+                        method: 'PUT',
+                        body: formData
+                    });
+                    if (!response.ok) {
+                        throw new Error('Failed to update product');
+                    }
+                } else {
+                    const response = await fetch('/api/products', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    if (!response.ok) {
+                        throw new Error('Failed to add product');
+                    }
+                }
+                closeModal();
+                fetchProducts();
+            } catch (error) {
+                console.error('Error saving product:', error);
+            }
+        }
+
+        async function editProduct(id) {
+            try {
+                const response = await fetch(`/api/products/${id}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch product');
+                }
+                const product = await response.json();
+                openModal(product);
+            } catch (error) {
+                console.error('Erreur lors de la récupération du produit:', error);
+            }
+        }
+
+        async function deleteProduct(id) {
+            try {
+                const response = await fetch(`/api/products/${id}`, {
+                    method: 'DELETE'
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to delete product');
+                }
+                fetchProducts();
+            } catch (error) {
+                console.error('Erreur lors de la suppression du produit:', error);
+            }
+        }
+
+        async function checkAdmin() {
+            try {
+                const response = await fetch('/check-session');
+                const data = await response.json();
+                isAdmin = data.isAdmin;
+                console.log('checkAdmin', isAdmin);
+                if (isAdmin) {
+                    document.getElementById('admin-buttons').style.display = 'flex';
+                }
+                fetchProducts();
+            } catch (error) {
+                console.error('Failed to check admin session', error);
+            }
+        }
+
+        window.onload = checkAdmin;
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('unique-navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.remove('transparent');
+                navbar.classList.add('solid');
+            } else {
+                navbar.classList.remove('solid');
+                navbar.classList.add('transparent');
+            }
+        });
+
+        document.getElementById('burger-menu').addEventListener('click', function () {
+            const navbarContent = document.getElementById('unique-navbar-content');
+            navbarContent.classList.toggle('active');
+        });
+    </script>
+    <script src="./common.js"></script>
+    <script src="./session-check.js"></script>
+</body>
+</html>

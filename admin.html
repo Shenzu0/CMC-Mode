@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .content-section {
+            margin-bottom: 20px;
+        }
+        .content-section input, .content-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .content-section button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <div class="content-section">
+        <h2>Section 1</h2>
+        <textarea id="content-section-1"></textarea>
+        <button onclick="saveContent('section-1')">Enregistrer</button>
+    </div>
+    <div class="content-section">
+        <h2>Section 2</h2>
+        <textarea id="content-section-2"></textarea>
+        <button onclick="saveContent('section-2')">Enregistrer</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            fetchContent('section-1');
+            fetchContent('section-2');
+        });
+
+        function fetchContent(id) {
+            fetch(`/get-content/${id}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(`content-${id}`).value = data;
+                })
+                .catch(error => console.error('Error fetching content:', error));
+        }
+
+        function saveContent(id) {
+            const content = document.getElementById(`content-${id}`).value;
+            fetch('/save-content', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: `content-${id}`, content: content })
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert('Contenu enregistré');
+            })
+            .catch(error => console.error('Error saving content:', error));
+        }
+    </script>
+</body>
+</html>

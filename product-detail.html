@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails du produit</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="./navbar.css">
+    <style>
+        /* Styles CSS ici */
+        body {
+            font-family: 'General Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #000000;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .content {
+            margin-top: 80px;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            background: #f1f1f1;
+        }
+        .product-detail {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+        }
+        .product-detail img {
+            max-width: 40%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin-right: 250px;
+        }
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 60%;
+            overflow: hidden;
+        }
+        .product-detail .title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        .product-detail .description {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+            word-wrap: break-word;
+        }
+        .admin-buttons {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+        .admin-buttons button {
+            padding: 10px 20px;
+            border: none;
+            background: #000;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .admin-buttons button:hover {
+            background: #666;
+        }
+        .footer {
+            padding: 20px;
+            background-color: #f1f1f1;
+            text-align: center;
+            margin-top: auto;
+        }
+        .footer-logo {
+            height: 50px;
+        }
+        .footer-links,
+        .social-links {
+            margin: 20px 0;
+        }
+        .footer-links a,
+        .social-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+        }
+        .footer-links a:hover,
+        .social-links a:hover {
+            color: gray;
+        }
+        .bFoot {
+            margin-top: 10px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal-content input,
+        .modal-content textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .modal-content button {
+            width: 100%;
+            background-color: #000;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .modal-content button:hover {
+            background-color: #666;
+        }
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            align-self: flex-end;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: black;
+        }
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            .product-detail {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            .product-detail img {
+                max-width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .product-info {
+                max-width: 100%;
+                margin-top: 0;
+                text-align: center;
+            }
+            .product-detail .title {
+                font-size: 2em;
+            }
+            .product-detail .description {
+                font-size: 1em;
+            }
+        }
+        @media (max-width: 768px) {
+            .product-detail {
+                padding: 20px;
+            }
+            .product-detail .title {
+                font-size: 1.8em;
+            }
+            .product-detail .description {
+                font-size: 0.9em;
+            }
+            .admin-buttons button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            .product-detail {
+                padding: 10px;
+            }
+            .product-detail .title {
+                font-size: 1.5em;
+            }
+            .product-detail .description {
+                font-size: 0.8em;
+            }
+            .admin-buttons {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .admin-buttons button {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="unique-navbar transparent" id="unique-navbar">
+        <a href="index.html"><img src="./mg2/6681c1660d9613fbf3097b52_28a8288e-5e38-4119-805b-f6eb28d25c1b-p-130x130q80.webp" alt="CMC MODE" class="unique-navbar-logo" id="navbar-logo"></a>
+        <div class="burger-menu" id="burger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav class="unique-navbar-content" id="unique-navbar-content">
+            <a href="index.html" class="nav-link">ACCUEIL</a>
+            <a href="shop.html" class="nav-link">PRODUITS</a>
+            <a href="about.html" class="nav-link">À PROPOS</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="blog.html" class="nav-link">BLOG</a>
+            <a href="#" class="nav-link" onclick="logout()">DÉCONNEXION</a>
+        </nav>
+    </div>
+    <div class="content">
+        <div class="product-detail" id="product-detail">
+            <!-- Le contenu du produit sera généré ici -->
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <a href="index.html"><img src="mg2/6681c1660d9613fbf3097b52_28a8288e-5e38-4119-805b-f6eb28d25c1b-p-130x130q80.webp" alt="CMC MODE" class="footer-logo"></a>
+            <div class="footer-links">
+                <a href="./politiqueDonnées.html">Politique de données</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><img src="images/facebook-icon.svg" alt="Facebook"></a>
+            </div>
+        </div>
+        <p>&copy; 2024 CMC MODE. Tous droits réservés.</p>
+    </footer>
+    <script>
+async function fetchProductDetails() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    console.log(`Product ID from URL: ${productId}`);
+    if (!productId) {
+        console.error('Product ID is missing from URL');
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:3001/api/products/${productId}`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const product = await response.json();
+        console.log(`Product data: ${JSON.stringify(product)}`);
+
+        if (!product || Object.keys(product).length === 0) {
+            throw new Error('Product data is empty');
+        }
+
+        const productDetailContainer = document.getElementById('product-detail');
+        if (productDetailContainer) {
+            productDetailContainer.innerHTML = `
+                <img src="${product.imageUrl}" alt="${product.title}">
+                <div class="product-info">
+                    <div class="title">${product.title}</div>
+                    <div class="description">${product.description}</div>
+                    ${document.body.classList.contains('admin') ? `
+                    <div class="admin-buttons">
+                        <button onclick="openModal('title', '${product._id}', '${product.title}')">Modifier le titre</button>
+                        <button onclick="openModal('description', '${product._id}', '${product.description}')">Modifier la description</button>
+                    </div>` : ''}
+                </div>
+            `;
+        } else {
+            console.error('Product detail container not found');
+        }
+    } catch (error) {
+        console.error('Failed to fetch product details', error);
+    }
+}
+        document.addEventListener('DOMContentLoaded', function () {
+            fetchProductDetails();
+    
+            fetch('http://localhost:3001/api/products/category/index')
+                .then(response => response.json())
+                .then(products => {
+                    const productsSection = document.getElementById('products-section');
+                    if (productsSection) {
+                        products.forEach(product => {
+                            const productCard = document.createElement('div');
+                            productCard.className = 'product-card';
+                            productCard.innerHTML = `
+                                <img src="${product.imageUrl}" alt="${product.title}" class="product-image">
+                                <div class="product-info">
+                                    <div class="product-title">${product.title}</div>
+                                    <div class="product-description">${product.description}</div>
+                                </div>
+                            `;
+                            productCard.addEventListener('click', () => {
+                                window.location.href = `product-detail.html?id=${product._id}`;
+                            });
+                            productsSection.appendChild(productCard);
+                        });
+                    } else {
+                        console.error('Products section not found');
+                    }
+                })
+                .catch(error => console.error('Erreur lors du chargement des produits:', error));
+        });
+    
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.unique-navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('solid');
+            } else {
+                navbar.classList.remove('solid');
+            }
+        });
+    
+        function openModal(field, id, currentValue) {
+            const newValue = prompt(`Modifier ${field}:`, currentValue);
+            if (newValue !== null) {
+                saveChanges(field, id, newValue);
+            }
+        }
+    
+        async function saveChanges(field, id, newValue) {
+    try {
+        const response = await fetch(`http://localhost:3001/api/products/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ [field]: newValue })
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        fetchProductDetails();
+    } catch (error) {
+        console.error('Failed to save changes', error);
+    }
+}
+        document.getElementById('burger-menu').addEventListener('click', function () {
+            const navbarContent = document.getElementById('unique-navbar-content');
+            navbarContent.classList.toggle('active');
+        });
+    
+        window.addEventListener('resize', function () {
+            const navbarContent = document.getElementById('unique-navbar-content');
+            const burgerMenu = document.getElementById('burger-menu');
+            const closeMenuIcon = document.getElementById('close-menu-icon');
+            if (window.innerWidth > 1050) {
+                navbarContent.classList.remove('active');
+                burgerMenu.classList.remove('active');
+                closeMenuIcon.classList.remove('active');
+            }
+        });
+    
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('http://localhost:3001/check-session')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.isAdmin) {
+                        document.body.classList.add('admin');
+                    } else {
+                        document.body.classList.remove('admin');
+                    }
+                })
+                .catch(error => console.error('Error checking session:', error));
+        });
+    </script>
+    <script src="./session-check.js"></script>
+    <script src="common.js"></script>
+</body>    
+</html>

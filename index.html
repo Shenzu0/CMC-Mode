@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Boutique de Vêtements, Bijoux et Accessoires pour Femmes à Calais - Petites et Grandes Tailles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez notre boutique de vêtements, bijoux et accessoires pour femmes, située à Calais. Nous proposons une large gamme de tailles, petites et grandes tailles. Visitez-nous à Calais Nord pour trouver la tenue parfaite pour toute occasion.">
+    <meta name="keywords" content="boutique vêtements femmes, bijoux femmes, accessoires femmes, grandes tailles, petites tailles, Calais, Calais Nord, mode féminine, shopping Calais">
+    <meta name="author" content="CMC Mode">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Boutique de Vêtements, Bijoux et Accessoires pour Femmes à Calais - Petites et Grandes Tailles">
+    <meta property="og:description" content="Découvrez notre boutique de vêtements, bijoux et accessoires pour femmes, située à Calais. Nous proposons une large gamme de tailles, petites et grandes tailles. Visitez-nous à Calais Nord pour trouver la tenue parfaite pour toute occasion.">
+    <meta property="og:url" content="https://www.votre-site.com">
+    <meta property="og:image" content="https://www.votre-site.com/images/logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="CMC Mode">
+    <meta property="og:see_also" content="https://www.facebook.com/people/CMC-Mode/100083366191144/">
+    <meta property="business:contact_data:street_address" content="51 Rue de la Mer">
+    <meta property="business:contact_data:locality" content="Calais">
+    <meta property="business:contact_data:region" content="Hauts-de-France">
+    <meta property="business:contact_data:postal_code" content="62100">
+    <meta property="business:contact_data:country_name" content="France">
+    <link rel="stylesheet" href="./navbar.css">
+    <link href="https://fonts.googleapis.com/css2?family=General+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+
+    <style>
+        /* Vos styles CSS ici */
+        body {
+            font-family: 'General Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./mg2/fashionable-boutique-owner-measures-dress-black-white-studio-generated-by-ai.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            margin: 0 0 20px;
+            z-index: 1;
+            color: #fffbfb;
+            color: #ffffff; /* Couleur du texte */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Ombre du texte pour améliorer la lisibilité */
+    font-size: 4em; /* Taille du texte */
+    font-weight: bold; /* Mettre en gras */
+    width: 50%;
+        }
+
+        .hero .button {
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            z-index: 1;
+        }
+
+        .hero .button:hover {
+            background-color: gray;
+        }
+
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .grid-wrapper {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .grid-item {
+            flex: 1;
+            margin: 10px;
+            max-width: 300px;
+        }
+
+        .grid-item img {
+            max-width: 100%;
+            transition: transform 0.3s;
+        }
+
+        .grid-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .products-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .product-card {
+            flex: 1;
+            margin: 10px;
+            max-width: 300px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .product-card img {
+            max-width: 100%;
+            transition: transform 0.3s;
+        }
+
+        .product-card img:hover {
+            transform: scale(1.05);
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container .button {
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .button-container .button:hover {
+            background-color: gray;
+        }
+
+        .separator {
+            height: 2px;
+            background-color: #e1e4e8;
+            margin: 50px 0;
+        }
+
+        .testimonials1_component {
+            position: relative;
+        }
+
+        .testimonials1_content {
+            background-color: #fff;
+            border: 1px solid #e1e4e8;
+            border-radius: 12px;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            min-height: 20rem;
+            padding: 2rem;
+            display: flex;
+        }
+
+        .block-top-wrap {
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+            display: flex;
+        }
+
+        .testimonials1_client-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonials1_client-details {
+            margin-left: 1rem;
+        }
+
+        .testimonials1_client-image {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+        }
+
+        .icone-plateform-review {
+            width: 40px;
+            margin-left: 0;
+        }
+
+        .footer {
+            padding: 20px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 50px;
+        }
+
+        .footer-links,
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a,
+        .social-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .footer-links a:hover,
+        .social-links a:hover {
+            color: gray;
+        }
+
+        .section-blog {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+            color: #ffffff;
+        }
+
+        .section-blog .button-container {
+            margin: 10%;
+        }
+
+        .section-blog h2 {
+            font-size: 36px;
+            margin-bottom: 80px;
+            color: #ffffff; /* Couleur du texte */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Ombre du texte pour améliorer la lisibilité */
+    font-size: 3em; /* Taille du texte */
+    font-weight: bold; /* Mettre en gras */
+        }
+
+        .section-blog p {
+            font-size: 30px;
+            margin-bottom: 20px;
+            width: 50%;
+            color: #000000; /* Couleur du texte */
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); /* Ombre du texte pour améliorer la lisibilité */
+
+    font-weight: bold; /* Mettre en gras */
+        }
+
+        .section-blog .edit-button {
+    position: absolute;
+
+    z-index: 2;
+    display: inline-block;
+    margin-left: -10px;
+}
+
+.section h2 {
+    color: #000000; /* Couleur du texte */
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); /* Ombre du texte pour améliorer la lisibilité */
+    font-size: 3em; /* Taille du texte */
+    font-weight: bold; /* Mettre en gras */
+}
+
+        @media (max-width: 700px) {
+            .testimonials1_component {
+                flex-direction: column;
+            }
+
+            .testimonials1_arrow {
+                top: auto;
+                bottom: -3rem;
+                transform: translateY(0);
+            }
+
+            .testimonials1_arrow.right {
+                left: 3.5rem;
+            }
+
+            .testimonials1_arrow.left {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 730px) {
+            .grid-wrapper {
+                flex-direction: column;
+            }
+
+            .products-section {
+                flex-direction: column;
+            }
+        }
+
+        p {
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonials1_content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .block-top-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .block-profile-img,
+        .block-date,
+        .icone-plateform-review {
+            margin-bottom: 10px;
+        }
+
+        .testimonials1_client-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .testimonials1_client-details {
+            text-align: center;
+        }
+
+        .avis {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20%;
+        }
+        
+
+        .section-blog {
+            background-image: url(./mg2/cute-woman-bright-hat-purple-blouse-is-leaning-stand-with-dresses-posing-with-package-isolated-background.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .section-blog::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Overlay with opacity */
+            z-index: 1;
+        }
+
+        .section-blog h2,
+        .section-blog p,
+        .section-blog .button-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .edit-button {
+            display: none;
+            margin-top: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .edit-button:hover {
+            background-color: gray;
+            transform: scale(1.05);
+        }
+
+        .admin .edit-button {
+            display: inline-block;
+           
+        }
+
+        .section-about {
+            position: relative;
+            padding: 50px 20px;
+            text-align: center;
+            color: #000000;
+        }
+
+        .section-about::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./mg2/female-friends-out-shopping-together.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .section-about .button-container {
+            margin-top: 10%;
+            margin-bottom: 5%;
+        }
+
+        .section-about h2 {
+            font-size: 3em;
+            color: #ffffff; /* Couleur du texte */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Ombre du texte pour améliorer la lisibilité */
+    font-size: 3em; /* Taille du texte */
+    font-weight: bold; /* Mettre en gras */
+        }
+
+        .section-about p {
+            font-size: 1.5em;
+            color: #000000; /* Couleur du texte */
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); /* Ombre du texte pour améliorer la lisibilité */
+    font-weight: bold; /* Mettre en gras */
+        }
+
+        @media (max-width: 700px) {
+            .section-blog h2 {
+                font-size: 28px;
+            }
+
+            .section-blog p {
+                font-size: 15px;
+            }
+
+            .section-about h2 {
+                font-size: 28px;
+            }
+
+            .section-about p {
+                font-size: 15px;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content input,
+        .modal-content textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .modal-content button {
+            width: 100%;
+            background-color: #000000;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background-color: #e1e0e0;
+            color: black;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+.background-cover {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.background-cover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1; 
+    z-index: -1;
+}
+
+/* Supprimer le pseudo-élément ::before si vous utilisez directement background-image sur la section */
+.hero::before, .section-about::before, .section-blog::before {
+    content: none; /* Supprimer le pseudo-élément */
+}
+
+@media (max-width: 730px) {
+    .products-section {
+        flex-direction: column;
+        align-items: center; /* Ajoutez cette ligne pour centrer les éléments */
+    }
+
+    .product-card {
+        margin: 10px auto; /* Centrez les cartes de produits */
+    }
+}
+.edit-button {
+    display: none; /* Masquer par défaut */
+}
+
+.admin .edit-button {
+    display: inline-block; /* Afficher en mode admin */
+}
+.section-blog .edit-button {
+    display: none; /* Assurez-vous que le bouton est masqué par défaut */
+}
+
+.admin .section-blog .edit-button {
+    display: inline-block; /* Afficher en mode admin */
+}
+
+.produits{
+    margin-bottom: 5%;
+    margin-top: 2%;
+}
+
+
+    </style>
+</head>
+</head>
+<body>
+    <header class="unique-navbar transparent" id="unique-navbar">
+        <a href="index.html">
+            <img src="mg2/6681c1660d9613fbf3097b52_28a8288e-5e38-4119-805b-f6eb28d25c1b-p-130x130q80.webp" alt="Logo CMC Mode" class="unique-navbar-logo" id="navbar-logo">
+        </a>
+        <nav class="burger-menu" id="burger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </nav>
+        <nav class="close-menu-icon" id="close-menu-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </nav>
+        <nav class="unique-navbar-content" id="unique-navbar-content">
+            <a href="index.html" class="nav-link">ACCUEIL</a>
+            <a href="shop.html" class="nav-link">PRODUITS</a>
+            <a href="about.html" class="nav-link">À PROPOS</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="blog.html" class="nav-link">BLOG</a>
+            <a href="#" class="nav-link" onclick="logout()">DÉCONNEXION</a>
+        </nav>
+    </header>
+    <section class="hero hero background-cover">
+        <h1>Découvrez Nos Nouvelles Collections</h1>
+        <a href="shop.html" class="button heroButton">Voir les Nouveautés</a>
+        <button class="edit-button" onclick="editBackgroundImage('hero')">Modifier Image de Fond</button>
+        <input type="file" id="upload-hero-bg" class="upload-input" style="display: none;" accept="image/*" onchange="uploadBackgroundImage(event, 'hero')">
+    </section>
+    <section class="section">
+        <h2>Nos Produits</h2>
+        <p class="produits">Découvrez notre gamme de produits uniques et de haute qualité. Cliquez ci-dessous pour voir notre collection complète.</p>
+        <div class="products-section" id="products-section">
+            <!-- Les produits seront affichés ici -->
+        </div>
+        <button class="edit-button" onclick="openModal()">Ajouter un produit</button>
+        <div class="button-container">
+            <a href="shop.html" class="button">Voir plus</a>
+        </div>
+    </section>
+    <section class="separator"></section>
+    <section class="section section-about hero background-cover">
+        <h2>À Propos de CMC MODE</h2>
+        <p>Nous sommes là pour vous offrir une expérience de shopping unique et personnalisée. Découvrez nos valeurs ainsi que notre localisation.</p>
+        <button class="edit-button" onclick="editBackgroundImage('about')">Modifier Image de Fond</button>
+        <input type="file" id="upload-about-bg" class="upload-input" style="display: none;" accept="image/*" onchange="uploadBackgroundImage(event, 'about')">
+        <div class="button-container">
+            <a href="about.html" class="button">En savoir plus</a>
+        </div>
+    </section>
+    <section class="separator"></section>
+    <section class="section section-blog hero background-cover">
+        <h2>Blog</h2>
+        <p>Découvrez nos derniers articles de blog, des conseils mode aux dernières tendances.</p>
+        <button class="edit-button" onclick="editBackgroundImage('blog')">Modifier Image de Fond</button>
+        <input type="file" id="upload-blog-bg" class="upload-input" style="display: none;" accept="image/*" onchange="uploadBackgroundImage(event, 'blog')">
+        <div class="button-container">
+            <a href="blog.html" class="button">Accéder au Blog</a>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <a href="index.html"><img src="mg2/6681c1660d9613fbf3097b52_28a8288e-5e38-4119-805b-f6eb28d25c1b-p-130x130q80.webp" alt="CMC MODE" class="footer-logo"></a>
+            <div class="footer-links">
+                <a href="./politiqueDonnées.html">Politique de données</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><img src="images/facebook-icon.svg" alt="Facebook"></a>
+            </div>
+        </div>
+        <p class="bFoot">&copy; 2024 CMC MODE. Tous droits réservés.</p>
+    </footer>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Ajouter un produit</h2>
+            <input type="hidden" id="productId">
+            <label for="title">Titre</label>
+            <input type="text" id="title" placeholder="Titre du produit">
+            <label for="description">Description</label>
+            <textarea id="description" placeholder="Description du produit"></textarea>
+            <label for="imageFile">Sélectionner une image</label>
+            <input type="file" id="imageFile" accept="image/*">
+            <button onclick="saveProduct()">Enregistrer</button>
+        </div>
+    </div>
+
+    <script>
+        let isEditMode = false;
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('unique-navbar');
+            const navbarContent = document.getElementById('unique-navbar-content');
+            if (!navbarContent.classList.contains('active')) {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('transparent');
+                    navbar.classList.add('solid');
+                } else {
+                    navbar.classList.remove('solid');
+                    navbar.classList.add('transparent');
+                }
+            }
+        });
+
+        document.getElementById('close-menu-icon').addEventListener('click', function() {
+            const navbarContent = document.getElementById('unique-navbar-content');
+            const navbarLogo = document.getElementById('navbar-logo');
+            const burgerMenu = document.getElementById('burger-menu');
+            const closeMenuIcon = document.getElementById('close-menu-icon');
+            navbarContent.classList.remove('active');
+            navbarLogo.classList.remove('hidden');
+            burgerMenu.classList.remove('hidden');
+            closeMenuIcon.style.display = 'none';
+            navbar.classList.remove('fixed-transparent');
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('/get-reviews')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('testimonials-container');
+                    data.reviews.forEach(review => {
+                        const reviewElement = document.createElement('div');
+                        reviewElement.classList.add('testimonials1_slide', 'w-slide');
+                        reviewElement.innerHTML = `
+                            <div class="testimonials1_content">
+                                <div class="block-top-wrap">
+                                    <img src="images/trustpilot-5-etoile-vert.png" loading="lazy" alt="5 étoiles trustpilot" class="block-profile-img">
+                                    <div class="block-top-text-wrap">
+                                        <div class="block-date">${new Date(review.createdAt).toLocaleDateString()}</div>
+                                    </div>
+                                    <img alt="Icone Trustpilot" loading="lazy" src="images/Logo-truspilot-1.png" class="icone-plateform-review">
+                                </div>
+                                <p>${review.text}</p>
+                                <div class="testimonials1_client-wrapper">
+                                    <div class="testimonials1_client-details">
+                                        <div>${review.consumer.displayName}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        container.appendChild(reviewElement);
+                    });
+                })
+                .catch(error => console.error('Erreur lors de la récupération des avis:', error));
+
+            // Animation on scroll
+            const sections = document.querySelectorAll('.section');
+            const options = {
+                threshold: 0.2
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Handle burger menu
+            const burgerMenu = document.getElementById('burger-menu');
+            const navbarContent = document.getElementById('unique-navbar-content');
+            const closeMenuIcon = document.getElementById('close-menu-icon');
+
+            function toggleMenu() {
+                const isActive = navbarContent.classList.contains('active');
+                navbarContent.classList.toggle('active', !isActive);
+                burgerMenu.classList.toggle('active', !isActive);
+                closeMenuIcon.classList.toggle('active', !isActive);
+            }
+
+            burgerMenu.addEventListener('click', toggleMenu);
+            closeMenuIcon.addEventListener('click', toggleMenu);
+
+            // Ensure burger menu state is reset on resize
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 1050) {
+                    navbarContent.classList.remove('active');
+                    burgerMenu.classList.remove('active');
+                    closeMenuIcon.classList.remove('active');
+                }
+            });
+
+            // Charger les images de fond au chargement de la page
+            fetch('/get-background-images')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.hero) {
+                        document.querySelector('.hero').style.backgroundImage = `url(${data.hero})`;
+                    }
+                    if (data.about) {
+                        document.querySelector('.section-about').style.backgroundImage = `url(${data.about})`;
+                    }
+                    if (data.blog) {
+                        document.querySelector('.section-blog').style.backgroundImage = `url(${data.blog})`;
+                    }
+                })
+                .catch(error => console.error('Erreur lors du chargement des images de fond:', error));
+
+            // Charger les produits au chargement de la page
+            fetch('/api/products/index')
+                .then(response => response.json())
+                .then(products => {
+                    const productsSection = document.getElementById('products-section');
+                    const bestsellersGrid = document.getElementById('bestsellers-grid');
+                    products.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'product-card';
+                        productCard.innerHTML = `
+                            <img src="${product.imageUrl}" alt="${product.title}" class="product-image" id="product-${product._id}">
+                            <div class="product-info">
+                                <div class="product-title">${product.title}</div>
+                                <div class="product-description">${product.description}</div>
+                            </div>
+                            <button class="edit-button" onclick="deleteProduct('${product._id}')">Supprimer</button>
+                            <input type="file" id="upload-product-${product._id}" class="upload-input" style="display: none;" accept="image/*" onchange="uploadImage(event, 'product-${product._id}')">
+                        `;
+                        if (product.category === 'bestsellers') {
+                            bestsellersGrid.appendChild(productCard);
+                        } else {
+                            productsSection.appendChild(productCard);
+                        }
+                    });
+                })
+                .catch(error => console.error('Erreur lors du chargement des produits:', error));
+        });
+
+        // Fonction pour activer le mode admin
+        function enableAdminMode() {
+            document.body.classList.add('admin');
+        }
+
+        // Fonction pour désactiver le mode admin
+        function disableAdminMode() {
+            document.body.classList.remove('admin');
+        }
+
+        // Fonction pour déconnexion
+        function logout() {
+            fetch('/logout', { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        // Supprimer la classe admin du corps pour masquer les boutons modifier
+                        document.body.classList.remove('admin');
+                        window.location.reload();
+                    } else {
+                        console.error('Failed to logout');
+                    }
+                });
+        }
+
+        async function openModal(product = null) {
+            const modal = document.getElementById('productModal');
+            const modalTitle = document.getElementById('modalTitle');
+            isEditMode = !!product;
+            modal.style.display = 'block';
+            if (isEditMode) {
+                document.getElementById('productId').value = product._id; // Assurez-vous que l'ID est défini ici
+                document.getElementById('title').value = product.title;
+                document.getElementById('description').value = product.description;
+                document.getElementById('imageFile').value = '';
+                modalTitle.textContent = 'Modifier le produit';
+            } else {
+                modalTitle.textContent = 'Ajouter un produit';
+                document.getElementById('productId').value = '';
+                document.getElementById('title').value = '';
+                document.getElementById('description').value = '';
+                document.getElementById('imageFile').value = '';
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('productModal');
+            modal.style.display = 'none';
+        }
+
+        async function saveProduct() {
+            const productId = document.getElementById('productId').value;
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const imageFile = document.getElementById('imageFile').files[0];
+
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', description);
+            formData.append('category', 'index'); // ou autre catégorie selon votre logique
+            if (imageFile) {
+                formData.append('image', imageFile);
+            }
+
+            if (isEditMode) {
+                await fetch(`/api/products/${productId}`, {
+                    method: 'PUT',
+                    body: formData
+                }).catch(error => console.error('Erreur lors de la mise à jour du produit:', error));
+            } else {
+                await fetch('/api/products', {
+                    method: 'POST',
+                    body: formData
+                }).catch(error => console.error('Erreur lors de l\'ajout du produit:', error));
+            }
+            closeModal();
+            window.location.reload(); // Recharge la page pour afficher les modifications
+        }
+
+        // Fonction pour éditer le produit
+        async function editProduct(id) {
+            const response = await fetch(`/api/products/${id}`);
+            const product = await response.json();
+            openModal(product);
+        }
+
+        // Fonction pour supprimer le produit
+        async function deleteProduct(id) {
+            await fetch(`/api/products/${id}`, {
+                method: 'DELETE'
+            });
+            window.location.reload(); // Recharge la page pour afficher les modifications
+        }
+
+        // Fonction pour éditer l'image
+        function editImage(productId) {
+            const fileInput = document.getElementById(`upload-${productId}`);
+            fileInput.click();
+        }
+
+        // Fonction pour gérer l'upload de l'image
+        function uploadImage(event, productId) {
+            const file = event.target.files[0];
+            const formData = new FormData();
+            formData.append('image', file);
+            formData.append('id', productId);
+
+            fetch('/upload-image', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById(productId).src = data.filePath;
+                    } else {
+                        alert('Échec du téléchargement de l\'image');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Fonction pour gérer l'upload de l'image de fond
+        function uploadBackgroundImage(event, sectionId) {
+            const file = event.target.files[0];
+            const formData = new FormData();
+            formData.append('image', file);
+            formData.append('section', sectionId);
+
+            fetch('/upload-background-image', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const section = document.querySelector(`.${sectionId}`);
+                    // Supprimer l'image de fond actuelle
+                    section.style.backgroundImage = 'none';
+                    // Ajouter la nouvelle image de fond
+                    section.style.backgroundImage = `url(${data.filePath})`;
+                    // Ajouter la classe de fond pour la nouvelle image si nécessaire
+                    if (!section.classList.contains('background-cover')) {
+                        section.classList.add('background-cover');
+                    }
+                } else {
+                    alert('Échec du téléchargement de l\'image');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Fonction pour ouvrir le sélecteur de fichier
+        function editBackgroundImage(section) {
+            const fileInput = document.getElementById(`upload-${section}-bg`);
+            fileInput.click();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('/check-session')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.isAdmin) {
+                        document.body.classList.add('admin');
+                    } else {
+                        document.body.classList.remove('admin');
+                    }
+                })
+                .catch(error => console.error('Error checking session:', error));
+        });
+    </script>
+</body>
+</html>
